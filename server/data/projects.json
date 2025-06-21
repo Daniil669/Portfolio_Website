@@ -1,0 +1,24 @@
+{
+  "project_categories": [
+    {
+      "id": "freelance",
+      "title": "Local Business Web Shop",
+      "description": "Real-world web shop built for a local skate gear brand."
+    },
+    {
+      "id": "personal",
+      "title": "Personal Projects",
+      "description": "Personal tools, hobby apps, and tech experiments."
+    },
+    {
+      "id": "university",
+      "title": "University Projects",
+      "description": "Coursework and assignments from academic studies."
+    },
+    {
+      "id": "coming_soon",
+      "title": "Coming Soon",
+      "description": "New interactive projects will be added shortly."
+    }
+  ]
+}

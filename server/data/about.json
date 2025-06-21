@@ -1,0 +1,45 @@
+{
+  "ident": "Daniil Shchennikov",
+  "role": "Software Engineer & Tech Enthusiast",
+  "status": "Final Year BSc in Software Engineering",
+  "location": "Vaasa, Finland",
+  "linguistic_capabilities": [
+    "English (Fluent)",
+    "Russian (Native)",
+    "Finnish (Basics)"
+  ],
+  "professional_summary": "I like technology — building it, using it, and solving real-world problems with it. I work best when I’m part of a team, planning and implementing smart solutions. With experience ranging from freelance projects to working kitchens, I’ve built skills in adaptability, communication, and fast learning. Now, I’m looking for a role where I can grow as a software engineer and make an impact.",
+  "technical_skills": [
+    "HTML", "CSS", "JavaScript", "Python", "PHP", "Java",
+    "React", "React Native", "Node.js", "Flask", "Django",
+    "MongoDB", "MySQL / SQLite", "Agile Methods", "Postman", "Axios",
+    "Basics of AI / ML", "Git", "REST APIs", "DevOps", "CI/CD", "Docker"
+  ],
+  "academy_records": [
+    "2020–2021: Russian University (IT department - Data Science Major)",
+    "2021–2023: Self-Taught (Web Dev, Frameworks, Projects)",
+    "2023–Present: VAMK University of Applied Sciences (Software Engineering Major)"
+  ],
+  "crew_traits": [
+    "Team-Oriented — built through high-pressure kitchen teamwork",
+    "Communicative — sharpened in customer-facing roles",
+    "Fast Learner — from self-study to system building",
+    "Adaptable — relocated, retrained, and retooled",
+    "Problem Solver — driven by purpose, not just features"
+  ],
+  "experience": {
+    "non_tech": ["Waiter", "Cook", "Postal Worker"],
+    "tech": ["Developed a custom web shop for a local business (Freelance)"]
+  },
+  "hobbies": [
+    "🎸 Guitar + Music",
+    "🏃 Jogging & Outdoor Training",
+    "⚙️ Hands-on DIY & Electronics Projects"
+  ],
+  "currently_learning": [
+    "RAG apps",
+    "Agents",
+    "Fine-tuning models",
+    "AI system design"
+  ]
+}

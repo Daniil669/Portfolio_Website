@@ -1,0 +1,43 @@
+{
+  "services": [
+    {
+      "title": "Full-Stack Web Development",
+      "description": [
+        "Frontend with React, HTML, CSS, JavaScript",
+        "Backend using Flask, Django, Node.js",
+        "REST APIs and JSON-based endpoints",
+        "Docker, CI/CD workflows, GitHub Actions, environment configuration"
+      ]
+    },
+    {
+      "title": "Mobile App Prototyping",
+      "description": [
+        "React Native interfaces",
+        "Ideal for small MVPs, utility apps, or hybrid deployment"
+      ]
+    },
+    {
+      "title": "API Integration & Backend Logic",
+      "description": [
+        "Flask or Node.js REST API design",
+        "Secure form handling, database connectivity",
+        "MongoDB, SQL (MySQL/SQLite)"
+      ]
+    },
+    {
+      "title": "Agile-Ready Workflow",
+      "description": [
+        "Comfortable using Jira, Git, and collaborative tools",
+        "Can work in sprints, plan deliverables, and track issues"
+      ]
+    },
+    {
+      "title": "MVP / Prototype Building",
+      "description": [
+        "Use Figma for rapid wireframing",
+        "Build a working demo to test or pitch ideas",
+        "Ideal for early-stage concepts or classroom-to-reality transitions"
+      ]
+    }
+  ]
+}
