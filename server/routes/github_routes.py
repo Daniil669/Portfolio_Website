@@ -9,3 +9,4 @@ def get_project_demo(project_name):
         return send_from_directory('static/projects_demos', file_name)
     except Exception as e:
         return jsonify({'error': str(e)})
+    

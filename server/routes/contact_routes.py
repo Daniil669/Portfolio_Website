@@ -26,9 +26,15 @@ def receive_contact_message():
         return jsonify({'error': 'Invalid input.'}), 400
     
     #add to db
-    # save_to_db(name, email, message)
+    is_saved = save_to_db(name, email, message)
+
+    if not is_saved:
+        return jsonify({'error': 'Failed to save message.'}), 500
 
     #send email
-    send_to_email(name, email, message)
+    try:
+        send_to_email(name, email, message)
+    except Exception as e:
+        print(f"Email sending failed: {e}")
 
     return jsonify({'status': 'Message sent!'}), 200
