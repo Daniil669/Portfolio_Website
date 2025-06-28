@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 import dotenv
 import os
 
-dotenv.load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
+dotenv.load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 def send_to_email(name, email, message):
     sender = os.environ.get("EMAIL_SENDER", "")

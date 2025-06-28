@@ -9,12 +9,14 @@
     "Finnish (Basics)"
   ],
   "professional_summary": "I like technology — building it, using it, and solving real-world problems with it. I work best when I’m part of a team, planning and implementing smart solutions. With experience ranging from freelance projects to working kitchens, I’ve built skills in adaptability, communication, and fast learning. Now, I’m looking for a role where I can grow as a software engineer and make an impact.",
-  "technical_skills": [
-    "HTML", "CSS", "JavaScript", "Python", "PHP", "Java",
-    "React", "React Native", "Node.js", "Flask", "Django",
-    "MongoDB", "MySQL / SQLite", "Agile Methods", "Postman", "Axios",
-    "Basics of AI / ML", "Git", "REST APIs", "DevOps", "CI/CD", "Docker"
-  ],
+  "technical_skills": {
+    "Programming Languages": ["JavaScript", "Python", "PHP", "Java"],
+    "Frameworks & Libraries": ["React", "React Native", "Node.js", "Flask", "Django", "Fast API", "Spring Boot"],
+    "Databases": ["MongoDB", "MySQL / SQLite"],
+    "AI": ["Basics of AI / ML"],
+    "Tools":["Agile Methods", "REST APIs", "Postman", "Axios", "Git", "CI/CD", "Docker"],
+    "Platforms":["Windows", "Linux", "Android"]
+  },
   "academy_records": [
     "2020–2021: Russian University (IT department - Data Science Major)",
     "2021–2023: Self-Taught (Web Dev, Frameworks, Projects)",
