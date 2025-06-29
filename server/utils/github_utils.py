@@ -2,7 +2,8 @@ import requests
 import os
 import dotenv
 import base64
-import beautifulsoup4
+from bs4 import BeautifulSoup
+import markdown
 
 dotenv.load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
 
@@ -29,39 +30,55 @@ def fetch_repos(gith_type):
     try:
         response = requests.get(GITHUB_URL+f"/users/{prof_name}/repos", headers=header)
         repos = response.json() # just dicts
-        final_data = return_data_format(repos, header)
+        final_data = return_data_format(repos, header, prof_name)
         return {'status': True, 'data': final_data, 'code': response.status_code}
     except Exception as e:
         return {'status': False, 'error': str(e), 'code': 500}
 
-def fetch_repo_languages(header):
+def fetch_repo_languages(repo, header, username):
     try:
-        languages = []
-        response = requests.get(GITHUB_URL+"/repos/{username}/{repo}/languages")
-        for language in response.keys():
-            languages.append(language)
-        return languages
+        response = requests.get(GITHUB_URL+f"/repos/{username}/{repo}/languages", headers=header)
+        if response.status_code != 200:
+            print("languages not success")
+            return []
+        data = response.json()
+        return list(data.keys()) if data else []
     except Exception as e:
+        print(str(e))
+        return []
+
+
+def fetch_parse_readme(repo, header, username):
+    try:
+        response = requests.get(GITHUB_URL+f"/repos/{username}/{repo}/readme", headers=header)
+        if response.status_code != 200:
+            print(f"No read me for {repo}")
+            return ""
+        response_json = response.json()
+        data = base64.b64decode(response_json['content']).decode('utf-8')
+        html_format = markdown.markdown(data)
+        soup = BeautifulSoup(html_format, "html.parser")
+        description = soup.find("p")
+        if description:
+            return description.get_text()
+        return ""
+    except Exception as e:
+        print(str(e))
         return ""
 
-
-def fetch_parse_readme(header):
-    pass
-
-def return_data_format(repos, header):
+def return_data_format(repos, header, prof_name):
     global ignored_repos
     return_data = []
     for repo in repos:
         if repo['name'] in ignored_repos:
             continue
-        languages = fetch_repo_languages(header)
-        description_techstack = fetch_parse_readme(header)
+        languages = fetch_repo_languages(repo['name'], header, prof_name)
+        description = fetch_parse_readme(repo['name'], header, prof_name)
         final_repo_info = {
             'name': repo['name'],
-            'main language': repo['language'],
-            'languages': languages,
-            'tech stack': description_techstack['techstach'] if description_techstack['techstack'] else "",
-            'description': description_techstack['description'],
+            'main language': repo['language'], # fallback for languages
+            'languages': languages, # fallback for techstack
+            'description': description,
             'source code': repo['html_url'],
             'created': repo['created_at'],
             'last update': repo['updated_at'],
