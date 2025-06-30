@@ -5,6 +5,7 @@ import base64
 from bs4 import BeautifulSoup
 import markdown
 import aiohttp
+import asyncio
 
 dotenv.load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
 
@@ -31,59 +32,71 @@ def fetch_repos(gith_type):
     try:
         response = requests.get(GITHUB_URL+f"/users/{prof_name}/repos", headers=header)
         repos = response.json() # just dicts
-        final_data = return_data_format(repos, header, prof_name)
+
+        #loop.run_until_complete
+        final_data = asyncio.run(return_data_format(repos, header, prof_name))
+
+        # final_data = return_data_format(repos, header, prof_name) 
         return {'status': True, 'data': final_data, 'code': response.status_code}
     except Exception as e:
         return {'status': False, 'error': str(e), 'code': 500}
 
-def fetch_repo_languages(repo, header, username):
+async def fetch_repo_languages(repo, username, session):
     try:
-        response = requests.get(GITHUB_URL+f"/repos/{username}/{repo}/languages", headers=header)
-        if response.status_code != 200:
-            print("languages not success")
-            return []
-        data = response.json()
-        return list(data.keys()) if data else []
+        #replace requests with session.get
+        async with session.get(GITHUB_URL+f"/repos/{username}/{repo}/languages") as response:
+            if response.status != 200:
+                print("languages not success")
+                return []
+            data = await response.json()
+            return list(data.keys()) if data else []
     except Exception as e:
         print(str(e))
         return []
 
 
-def fetch_parse_readme(repo, header, username):
+async def fetch_parse_readme(repo, username, session):
     try:
-        response = requests.get(GITHUB_URL+f"/repos/{username}/{repo}/readme", headers=header)
-        if response.status_code != 200:
-            print(f"No read me for {repo}")
+        #replace requests with session.get
+        async with session.get(GITHUB_URL+f"/repos/{username}/{repo}/readme") as response:
+            if response.status != 200:
+                print(f"No read me for {repo}")
+                return ""
+            response_json = await response.json()
+            data = base64.b64decode(response_json['content']).decode('utf-8')
+            html_format = markdown.markdown(data)
+            soup = BeautifulSoup(html_format, "html.parser")
+            description = soup.find("p")
+            if description:
+                return description.get_text()
             return ""
-        response_json = response.json()
-        data = base64.b64decode(response_json['content']).decode('utf-8')
-        html_format = markdown.markdown(data)
-        soup = BeautifulSoup(html_format, "html.parser")
-        description = soup.find("p")
-        if description:
-            return description.get_text()
-        return ""
     except Exception as e:
         print(str(e))
         return ""
 
-def return_data_format(repos, header, prof_name):
+async def return_data_format(repos, header, prof_name):
     global ignored_repos
     return_data = []
-    for repo in repos:
-        if repo['name'] in ignored_repos:
-            continue
-        languages = fetch_repo_languages(repo['name'], header, prof_name)
-        description = fetch_parse_readme(repo['name'], header, prof_name)
-        final_repo_info = {
-            'name': repo['name'],
-            'main language': repo['language'], # fallback for languages
-            'languages': languages, # fallback for techstack
-            'description': description,
-            'source code': repo['html_url'],
-            'created': repo['created_at'],
-            'last update': repo['updated_at'],
-            'demo': ""
-        }
-        return_data.append(final_repo_info)
+    #create clientsession
+    async with aiohttp.ClientSession(headers=header) as session:
+
+        for repo in repos:
+            if repo['name'] in ignored_repos:
+                continue
+
+            languages_task = asyncio.create_task(fetch_repo_languages(repo['name'], prof_name, session))
+            description_task = asyncio.create_task(fetch_parse_readme(repo['name'], prof_name, session))
+            languages, description = await asyncio.gather(languages_task, description_task)
+
+            final_repo_info = {
+                'name': repo['name'],
+                'main language': repo['language'], # fallback for languages
+                'languages': languages, # fallback for techstack
+                'description': description,
+                'source code': repo['html_url'],
+                'created': repo['created_at'],
+                'last update': repo['updated_at'],
+                'demo': ""
+            }
+            return_data.append(final_repo_info)
     return return_data
