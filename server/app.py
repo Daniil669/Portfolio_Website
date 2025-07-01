@@ -5,6 +5,7 @@ import dotenv
 from routes.info_routes import info_bp
 from routes.github_routes import github_bp
 from routes.contact_routes import contact_bp
+from utils.log_helper import app_logger
 
 cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
 
@@ -20,4 +21,6 @@ app.register_blueprint(contact_bp, url_prefix='/api/contact')
 
 
 if __name__ == "__main__":
+    app_logger.info("The app is running.")
     app.run(debug=True)
+    

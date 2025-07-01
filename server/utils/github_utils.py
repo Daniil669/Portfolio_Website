@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import markdown
 import aiohttp
 import asyncio
+from utils.log_helper import utils_logger
 
 dotenv.load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
 
@@ -22,6 +23,7 @@ def fetch_repos(gith_type):
         prof_name = os.environ.get("GITHUB_PERSONAL_USERNAME", "")
         token = os.environ.get("GITHUB_PERSONAL_TOKEN", "")
     else:
+        utils_logger.warning("Warning in fetch_repos: Source type is not specified.")
         return {'status': False, 'error': 'Source type is not specified.', 'code': 400}
     
     header = {
@@ -31,6 +33,7 @@ def fetch_repos(gith_type):
 
     try:
         response = requests.get(GITHUB_URL+f"/users/{prof_name}/repos", headers=header)
+        utils_logger.info("Request to get GitHub repos has been made.")
         repos = response.json() # just dicts
 
         #loop.run_until_complete
@@ -39,19 +42,21 @@ def fetch_repos(gith_type):
         # final_data = return_data_format(repos, header, prof_name) 
         return {'status': True, 'data': final_data, 'code': response.status_code}
     except Exception as e:
+        utils_logger.error(f"Error in fetch_repo: {e} ")
         return {'status': False, 'error': str(e), 'code': 500}
 
 async def fetch_repo_languages(repo, username, session):
     try:
         #replace requests with session.get
         async with session.get(GITHUB_URL+f"/repos/{username}/{repo}/languages") as response:
+            utils_logger.info("Request to get languages has been made.")
             if response.status != 200:
-                print("languages not success")
+                utils_logger.warning("Warning in fetch_repo_languages. Languages not success.")
                 return []
             data = await response.json()
             return list(data.keys()) if data else []
     except Exception as e:
-        print(str(e))
+        utils_logger.error(f"Error in fetch_repo_languages: f{str(e)}")
         return []
 
 
@@ -59,8 +64,9 @@ async def fetch_parse_readme(repo, username, session):
     try:
         #replace requests with session.get
         async with session.get(GITHUB_URL+f"/repos/{username}/{repo}/readme") as response:
+            utils_logger.info("Request to get GitHub repos has been made.")
             if response.status != 200:
-                print(f"No read me for {repo}")
+                utils_logger.warning(f"Warning in fetch_parse_readme. No read me for {repo}")
                 return ""
             response_json = await response.json()
             data = base64.b64decode(response_json['content']).decode('utf-8')
@@ -71,7 +77,7 @@ async def fetch_parse_readme(repo, username, session):
                 return description.get_text()
             return ""
     except Exception as e:
-        print(str(e))
+        utils_logger.error(f"Error in fetch_parse_readme: str(e)")
         return ""
 
 async def return_data_format(repos, header, prof_name):

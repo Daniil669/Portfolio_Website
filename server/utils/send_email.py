@@ -3,6 +3,8 @@ from email.mime.text import MIMEText
 import dotenv
 import os
 
+from utils.log_helper import utils_logger
+
 dotenv.load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.env'))
 
 def send_to_email(name, email, message):
@@ -22,4 +24,4 @@ def send_to_email(name, email, message):
     with smtplib.SMTP_SSL(email_server, port_number) as server:
         server.login(sender, sender_pss)
         server.send_message(final_message)
-
+        utils_logger.info("Contacts details were send to your email.")

@@ -1,6 +1,8 @@
 import sqlite3
 import os
 
+from utils.log_helper import utils_logger
+
 def get_db_path():
     db_relative_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'contact_data.db')
     db_absolute_path = os.path.abspath(db_relative_path)
@@ -32,6 +34,9 @@ def save_to_db(name, email, message):
         db_connection.commit()
         db_connection.close()
 
+        utils_logger.info("Contacts were saved to db.")
+
         return True
-    except Exception:
+    except Exception as e:
+        utils_logger.error(f"Error in save_to_db: {str(e)}")
         return False
