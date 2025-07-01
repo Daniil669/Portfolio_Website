@@ -64,7 +64,7 @@ async def fetch_parse_readme(repo, username, session):
     try:
         #replace requests with session.get
         async with session.get(GITHUB_URL+f"/repos/{username}/{repo}/readme") as response:
-            utils_logger.info("Request to get GitHub repos has been made.")
+            utils_logger.info("Request to get GitHub repos readme has been made.")
             if response.status != 200:
                 utils_logger.warning(f"Warning in fetch_parse_readme. No read me for {repo}")
                 return ""

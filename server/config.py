@@ -14,4 +14,4 @@ class DevelopmentConfig(Config):
 class ProductionConfig(Config):
     CACHE_TYPE = ''
     CACHE_URL = ''
-    CORS_ORIGIN = []
+    CORS_ORIGINS = [os.getenv("FRONTEND_ORIGIN")]

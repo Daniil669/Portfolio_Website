@@ -23,6 +23,7 @@ def get_projects_info(gith_type):
         routes_logger.info("Endpoint projects_info was called")
         response_data = fetch_repos(gith_type)
         if not response_data['status']:
+            routes_logger.warning(f"Warning: {response_data['error']}")
             return jsonify({'error': f'{response_data['error']}'}), response_data['code']
         return jsonify({'data': response_data['data']}), response_data['code']
     except Exception as e:
