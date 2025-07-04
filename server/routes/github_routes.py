@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, send_from_directory, request
 from utils.github_utils import fetch_repos
-from server.app import cache
 from utils.log_helper import routes_logger
+from extensions import cache
 
 github_bp = Blueprint('github', __name__)
 

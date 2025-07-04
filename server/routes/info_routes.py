@@ -27,6 +27,17 @@ def get_projects_info():
         routes_logger.error(f"Error in /projects endpoint: {response_data['error']}")
         return jsonify(response_data['error']), response_data['code']
 
+
+@info_bp.route('/freelance_project', methods=['GET'])
+def get_freelance_project_info():
+    routes_logger.info("Endpoint freelance project was called.")
+    response_data = prepare_file("freelance_project.json")
+    if response_data['status']:
+        return jsonify(response_data['data']), response_data['code']
+    else:
+        routes_logger.error(f"Error in /freelance_project: {response_data['error']}")
+        return jsonify(response_data['error']), response_data['code']
+
     
 @info_bp.route('/service', methods=['GET'])
 def get_service_info():
