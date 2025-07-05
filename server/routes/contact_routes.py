@@ -3,6 +3,7 @@ import re
 from utils.save_to_db import save_to_db
 from utils.send_email import send_to_email
 from utils.log_helper import routes_logger
+from utils.captcha import verify_captcha
 
 contact_bp = Blueprint('contact', __name__)
 
@@ -17,6 +18,11 @@ def receive_contact_message():
     routes_logger.info("Contact_message endpoint was called.")
     data = request.get_json(silent=True)
 
+    # UNCOMMENT
+    # if not verify_captcha(data.get('g-recaptcha-response', ''), request.remote_addr):
+    #     routes_logger.warning('Warning: Captcha failed.')
+    #     return jsonify({'error': 'Captcha failed.'}), 403
+
     if not data:
         routes_logger.warning("Warning in contact_route: Invalid or mission JSON")
         return jsonify({'error': 'Invalid or missing JSON.'}), 400
@@ -29,7 +35,7 @@ def receive_contact_message():
         routes_logger.error("Error in contact_route: Ivalid input.")
         return jsonify({'error': 'Invalid input.'}), 400
     
-    #add to db
+    #save to db
     is_saved = save_to_db(name, email, message)
 
     if not is_saved:

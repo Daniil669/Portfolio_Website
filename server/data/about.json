@@ -10,8 +10,8 @@
   ],
   "professional_summary": "I like technology — building it, using it, and solving real-world problems with it. I work best when I’m part of a team, planning and implementing smart solutions. With experience ranging from freelance projects to working kitchens, I’ve built skills in adaptability, communication, and fast learning. Now, I’m looking for a role where I can grow as a software engineer and make an impact.",
   "technical_skills": {
-    "Programming Languages": ["Python", "Java", "Go", "JavaScript", "PHP"],
-    "Frameworks & Libraries": ["React.js", "React Native", "Node.js", "Flask", "Django", "Fast API", "Spring Boot"],
+    "Programming Languages": ["Python", "Go", "JavaScript/TypeScript", "PHP", "C++"],
+    "Frameworks & Libraries": ["React.js", "React Native", "Node.js", "Flask", "Django", "Fast API"],
     "Databases": ["MongoDB", "MySQL / SQLite"],
     "AI": ["Basics of AI / ML"],
     "Tools":["Agile Methods", "REST APIs", "Postman", "Axios", "Git", "CI/CD", "Docker"],
