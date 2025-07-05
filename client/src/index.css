@@ -1,0 +1,28 @@
+*, ::after, ::before {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: 'Courier Prime', monospace;
+    background-color: #070707;
+    color: #00FF66;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: #00FF66;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #070707;
+    background-color: #00FF66;
+}
+
+button, a, input, textarea {
+    cursor: pointer;
+    font-family: inherit;
+}
+
