@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      // Allows imports like '/pages/Home/Home'
+      // Allows imports like '@/pages/Home/Home'
       '@': path.resolve(__dirname, './src'),
     },
   },
