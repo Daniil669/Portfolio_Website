@@ -1,24 +1,17 @@
-import { projects_info_api } from "../../api/githubProjectsApi";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-    const [mediaUrl, setMediaUrl] = useState(null)
-    const [data, setData] = useState({})
+    const contact_data = {name: "John Smith", email: "john.smith@test.com", message: "Hello there!"}
 
-    useEffect(()=>{
-    const fetchData = async () =>{
-        const data_ = await projects_info_api("pers")
-        console.log(data_)
-        setData(data_)
-
+    const clickHandler = async () => {
+        const response = await contact_api(contact_data)
+        console.log(response)
     }
-    fetchData()
-    }, [])
 
     return (
         <>
         <h1>Home</h1>
-        <img src={mediaUrl} alt="image" />
+        <button onClick={()=>clickHandler()}>Send message</button>
         </>
     );
 }
