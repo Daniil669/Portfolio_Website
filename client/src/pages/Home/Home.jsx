@@ -1,13 +1,13 @@
-import { cv_api } from "../../api/infoApi";
+import { projects_info_api } from "../../api/githubProjectsApi";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-    const [imgUrl, setImgUrl] = useState(null)
+    const [mediaUrl, setMediaUrl] = useState(null)
     const [data, setData] = useState({})
 
     useEffect(()=>{
     const fetchData = async () =>{
-        const data_ = await cv_api()
+        const data_ = await projects_info_api("pers")
         console.log(data_)
         setData(data_)
 
@@ -18,7 +18,7 @@ export default function Home() {
     return (
         <>
         <h1>Home</h1>
-        <img src={imgUrl} alt="image" />
+        <img src={mediaUrl} alt="image" />
         </>
     );
 }

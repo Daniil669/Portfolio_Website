@@ -26,8 +26,9 @@ app.register_blueprint(info_bp, url_prefix='/api/info')
 app.register_blueprint(github_bp, url_prefix='/api/github')
 app.register_blueprint(contact_bp, url_prefix='/api/contact')
 
+app_logger.info("The app is initialized.")
 
 if __name__ == "__main__":
-    app_logger.info("The app is running.")
+    
     app.run(debug=True)
     

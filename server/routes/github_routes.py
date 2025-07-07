@@ -16,8 +16,8 @@ def get_project_demo(project_name):
         return jsonify({'error': str(e)})
 
 
-@github_bp.route('/projects_info/<gith_type>?refresh=true')
-@cache.cached(timeout=1800, unless=lambda: request.arg.get('refresh') == 'true')
+@github_bp.route('/projects_info/<gith_type>')
+@cache.cached(timeout=1800, unless=lambda: request.args.get('refresh') == 'true')
 def get_projects_info(gith_type):
     try:
         routes_logger.info("Endpoint projects_info was called")
