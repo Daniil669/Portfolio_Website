@@ -1,4 +1,4 @@
-import '@/card.css'
+import './card.css'
 /**
  *  • variant     – string  → "about" | "project" | "service" | "error" … (adds BEM-style modifier class)
  *  • header      – node    → optional header content

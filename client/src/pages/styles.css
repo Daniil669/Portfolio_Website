@@ -1,0 +1,45 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.title-subtitle-container {
+    width: 89%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: dashed none;
+    border-width: 4px 0;
+    border-color: #00FF66 ;
+    margin: 35px 0px;
+    gap: 35px;
+    padding: 35px 0px;
+}
+
+.title, .subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+.subtitle {
+    gap: 15px;
+}
+
+.title h1 {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 2.3rem;
+    color: #7B4CEB;
+    text-shadow: #fff 0px 5px;
+}
+
+.subtitle h2 {
+    font-family: "VT323", monospace;
+    font-weight: normal;
+    font-size: 2rem;
+    color: #00FBFE;
+}

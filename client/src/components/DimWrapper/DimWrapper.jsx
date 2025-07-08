@@ -1,4 +1,4 @@
-import '@/dimWrapper.css'
+import './dimWrapper.css'
 /**
  * Props
  *  dim - Boolean; true ⇒ 60 % dark overlay, false ⇒ fully clear

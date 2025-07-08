@@ -1,17 +1,26 @@
-import { useState, useEffect } from "react";
+import Terminal from './../components/TerminalWrapper/Terminal.jsx'
+import ClockBar from './../components/ClockBar/ClockBar.jsx'
+import NavBar from './../components/NavBar/NavBar.jsx'
+import './styles.css'
 
 export default function Home() {
-    const contact_data = {name: "John Smith", email: "john.smith@test.com", message: "Hello there!"}
-
-    const clickHandler = async () => {
-        const response = await contact_api(contact_data)
-        console.log(response)
-    }
-
     return (
-        <>
-        <h1>Home</h1>
-        <button onClick={()=>clickHandler()}>Send message</button>
-        </>
+        <Terminal>
+            <ClockBar section={"MAIN TERMINAL (Home)"} />
+            <div className="wrapper">
+            <div className='title-subtitle-container'>
+            <div className='title'>
+                <h1>Daniil</h1>
+                <h1>Shchennikov</h1>
+            </div>
+            <div className='subtitle'>
+                <h2>Software Engineer</h2>
+                <h2>&</h2>
+                <h2>Tech Enthusiast</h2>
+            </div>
+            </div>
+            </div>
+            <NavBar />
+        </Terminal>
     );
 }

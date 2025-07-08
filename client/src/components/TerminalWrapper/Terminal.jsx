@@ -1,4 +1,4 @@
-import '@/terminal.css'
+import './terminal.css'
 /**
  * Wraps NavBar / ClockBar / Page Content inside the green-border “screen”.
  *

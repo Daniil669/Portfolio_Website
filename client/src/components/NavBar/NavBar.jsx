@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import './navBar.css'
 
 /**
  * Appears inside Terminal (before or after LockBar depending on page)
@@ -7,11 +8,11 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBar({ className = "" }) {
   const links = [
-    { to: "/", label: "HOME", end: true  }, // `end` so only exact "/" matches
-    { to: "/about",label: "ABOUT"},
-    { to: "/projects", label: "PROJECTS"},
-    { to: "/services", label: "SERVICE"},
-    { to: "/contact",  label: "CONTACT"},
+    { to: "/", label: "[HOME]", end: true  }, // `end` so only exact "/" matches
+    { to: "/about",label: "[ABOUT]"},
+    { to: "/projects", label: "[PROJECTS]"},
+    { to: "/services", label: "[SERVICE]"},
+    { to: "/contact",  label: "[CONTACT]"},
   ];
 
   return (

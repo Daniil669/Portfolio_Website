@@ -1,7 +1,8 @@
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import '@/starField.css'
+import { loadEmittersPlugin } from "tsparticles-plugin-emitters";
+import './starField.css'
 /**
  * Props
  *  active - show / hide the canvas (false on boot, loading, 404)
@@ -11,37 +12,54 @@ export default function Starfield({ active = true, className = "" }) {
   // load only the lightweight preset
   const init = useCallback(async (engine) => {
     await loadSlim(engine);
+    await loadEmittersPlugin(engine);
   }, []);
 
   // slow, subtle fly-through config
   const options = {
     background: { color: "transparent" },
-    fullScreen: { enable: false },           // size with CSS instead
+    fullScreen: { enable: true },
     fpsLimit: 60,
     particles: {
-      number: {
-        value: 250,
-        density: { enable: true, area: 1200 },
-      },
+      number: { value: 0 },              // emitters handle creation
       color: { value: "#ffffff" },
       shape: { type: "circle" },
       opacity: {
-        value: 0.8,
-        random: { enable: true, minimumValue: 0.5 },
+        value: { min: 0.3, max: 0.9 },
+        animation: {
+          enable: true,
+          startValue: "max",
+          destroy: "min",
+          speed: 1.2,
+        },
       },
       size: {
-        value: 1.5,
-        random: { enable: true, minimumValue: 0.5 },
+        value: { min: 0.15, max: 5 },
+        animation: {
+          enable: true,
+          startValue: "min",
+          destroy: "max",
+          speed: 2,
+        },
       },
       move: {
         enable: true,
-        speed: 0.3,            // gentle drift
-        direction: "none",
-        warp: true,            // slight “depth” illusion
+        direction: "none",               // outward in all directions
+        speed: { min: 5, max: 7 },     // adjust for taste
         straight: false,
-        outModes: { default: "out" },
+        outModes: { default: "destroy" },// remove when off-screen
       },
     },
+
+    /* ⭐ the magic: spawn at centre, fly outwards */
+    emitters: {
+      direction: "none",
+      position: { x: 50, y: 50 },        // centre of canvas
+      rate: { delay: 0.03, quantity: 3 },// spawn rate
+      size: { width: 0, height: 0 },     // point emitter
+      life: { count: 2 },                // live forever (continuous)
+    },
+
     detectRetina: true,
   };
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import '@/loader.css'
+import './loader.css'
 /**
  * Props
  *  • variant     – "boot" | "load"          (headline text)   ─ default "load"

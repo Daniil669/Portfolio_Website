@@ -1,5 +1,8 @@
 /* Base wrapper always fills viewport and sits above Starfield */
 .dim-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;          /* keeps page content in normal flow */
   min-height: 100vh;
   z-index: 0;                  /* Starfield has z-index: -1 */

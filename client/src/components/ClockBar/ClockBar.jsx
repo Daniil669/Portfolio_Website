@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '@/clockBar.css'
+import './clockBar.css'
 
 /**
  * Props
@@ -12,7 +12,7 @@ import '@/clockBar.css'
  */
 
 export default function ClockBar({
-  section = "",
+  section,
   subsection = "",
   showBack = false,
   backTarget = -1,          // default: history back
@@ -32,13 +32,10 @@ export default function ClockBar({
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
+     hour12: false
   });
 
-  const dateStr = now.toLocaleDateString([], {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
+  const dateStr = now.toLocaleDateString();
 
   return (
     <header className={`clock-bar ${className}`}>
@@ -53,21 +50,23 @@ export default function ClockBar({
           }
           aria-label="Go back"
         >
-          ← BACK
+          {"[BACK]"}
         </button>
       )}
 
-      {/* section & subsection (center) */}
+      <div className="clock-time">
+        <span className="date">{dateStr}</span>
+        <span className="date-time-bar">|</span>
+        <span className="time">{timeStr}</span>
+      </div>
+
       <div className="clock-labels">
-        <span className="section">{section}</span>
+        <div className="title"><span className="arrow">{">"}</span>
+        <span className="section">{section}</span></div>
+  
         {subsection && <span className="subsection">/ {subsection}</span>}
       </div>
 
-      {/* date & time (right) */}
-      <div className="clock-time">
-        <span className="date">{dateStr}</span>
-        <span className="time">{timeStr}</span>
-      </div>
     </header>
   );
 }
