@@ -1,13 +1,13 @@
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import 
+import '@/starField.css'
 /**
  * Props
  *  active - show / hide the canvas (false on boot, loading, 404)
  *  className - optional extra class names
  */
-function Starfield({ active = true, className = "" }) {
+export default function Starfield({ active = true, className = "" }) {
   // load only the lightweight preset
   const init = useCallback(async (engine) => {
     await loadSlim(engine);
@@ -55,4 +55,3 @@ function Starfield({ active = true, className = "" }) {
   );
 }
 
-export default Starfield;

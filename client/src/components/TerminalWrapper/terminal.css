@@ -1,0 +1,30 @@
+/* outer bezel – keeps content centred and leaves breathing room */
+.terminal {
+  position: relative;
+  max-width: 1024px;
+  margin-inline: auto;
+  padding: 1.5rem 1.25rem;
+  border: 2px solid #00ffff;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.35);
+  backdrop-filter: blur(2px);     /* blends with Starfield */
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 4rem);     /* leave space for wrapper padding */
+}
+
+/* scrolling viewport for long pages */
+.terminal-scroll {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-right: 0.5rem;          /* room for scrollbar */
+}
+
+/* optional scroll-bar theming (WebKit) */
+.terminal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: #00ffff;
+}

@@ -1,0 +1,33 @@
+/* base frame */
+.card {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 255, 255, 0.35);
+  border-radius: 6px;
+  padding: 1rem;
+  margin-block: 1.25rem;
+  color: #ffffff;
+  font-family: "Courier Prime", monospace;
+}
+
+/* header & footer */
+.card-header,
+.card-footer {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* footer links inline */
+.card-footer > * + * {
+  margin-left: 1rem;
+}
+
+/* ---------- variant modifiers (expand as needed) ---------- */
+
+.card--about      { border-color: #00ffff; }
+.card--project    { border-color: #ff00ff; }
+.card--service    { border-color: #00ff7f; }
+.card--error      { border-color: #ff5555; }
+
+/* example body tweaks */
+.card--error .card-body { color: #ff5555; }
