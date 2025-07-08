@@ -3,8 +3,8 @@
     {
       "title": "Full-Stack Web Development",
       "description": [
-        "Frontend with React, HTML, CSS, JavaScript",
-        "Backend using Flask, Django, Node.js",
+        "Frontend with React, JavaScript",
+        "Backend using Flask, Django, Gin, Spring Boot, Fast API",
         "REST APIs and JSON-based endpoints",
         "Docker, CI/CD workflows, GitHub Actions, environment configuration"
       ]
