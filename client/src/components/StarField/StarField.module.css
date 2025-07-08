@@ -1,0 +1,12 @@
+/* Full-screen background canvas */
+#starfield {
+  position: fixed;
+  inset: 0;                /* top/right/bottom/left = 0 */
+  z-index: -1;             /* behind DimWrapper + content */
+  pointer-events: none;    /* clicks pass through */
+}
+
+/* optional: toggle via data attribute on RootLayout */
+[data-active="false"] #starfield {
+  display: none;
+}

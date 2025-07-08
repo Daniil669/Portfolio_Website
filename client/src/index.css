@@ -7,7 +7,7 @@ body {
     font-family: 'Courier Prime', monospace;
     background-color: #070707;
     color: #00FF66;
-    overflow: auto;
+    overflow: hidden;
     scroll-behavior: smooth;
 }
 
