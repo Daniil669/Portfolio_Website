@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Typewriter } from 'react-simple-typewriter'
 import './clockBar.css'
+import { useAnimation } from "../../context/AnimationContext";
 
 /**
  * Props
@@ -20,6 +22,14 @@ export default function ClockBar({
 }) {
 
   const navigate = useNavigate();
+
+  const {showAnimation, setShowAnimation} = useAnimation();
+
+  const handleCursor = () => {
+      if (!showAnimation[1]) {
+    setShowAnimation([false, true]);
+  }
+  };
 
   const [now, setNow] = useState(() => new Date());
 
@@ -62,9 +72,22 @@ export default function ClockBar({
 
       <div className="clock-labels">
         <div className="title"><span className="arrow">{">"}</span>
-        <span className="section">{section}</span></div>
+        <span className="section">
+          <Typewriter words={[section]}
+          typeSpeed={35}
+          cursor={showAnimation[0]}
+          cursorStyle="_"
+          onLoopDone={()=>{handleCursor()}}
+          loop={1}
+          />
+          </span></div>
   
-        {subsection && <span className="subsection">/ {subsection}</span>}
+        {subsection && <span className="subsection"><Typewriter
+          words={[subsection]}
+          typeSpeed={35}
+          cursor
+          cursorStyle="_"
+        /></span>}
       </div>
 
     </header>

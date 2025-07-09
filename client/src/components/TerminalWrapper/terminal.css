@@ -8,6 +8,7 @@
   border: #00FF66 solid 3px;
   border-radius: 2px;
   background-color: rgba(7, 7, 7, 0.8);
+  z-index: 10;
      /* leave space for wrapper padding */
 }
 

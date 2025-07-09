@@ -23,6 +23,7 @@ a {
     color: #00FF66;
     padding: 1px 2px;
     text-decoration: none;
+    transition: color 0.25s ease;
 }
 
 a:hover {
