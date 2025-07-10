@@ -1,33 +1,37 @@
-/* base frame */
 .card {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(0, 255, 255, 0.35);
-  border-radius: 6px;
-  padding: 1rem;
-  margin-block: 1.25rem;
-  color: #ffffff;
-  font-family: "Courier Prime", monospace;
+  display: flex;
+  flex-direction: row;
+  width: 89%;
+  border: 2px #00FF66 dashed;
+  border-radius: 2px;
+  gap: 20px;
+  font-family: 'Courier Prime', monospace;
+  background-color: transparent;
+  color: #00ffff;
 }
 
-/* header & footer */
-.card-header,
-.card-footer {
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+.title {
+  font-weight: bold;
+  color: #00FF66;
 }
 
-/* footer links inline */
-.card-footer > * + * {
-  margin-left: 1rem;
+.card.about { background: rgba(0,0,0,0.5); }
+.card.services .paragraph { color: #00ffff; }
+.card.projects .button-group a {
+  color: #00ffff;
+  background: transparent;
+  text-decoration: none;
 }
 
-/* ---------- variant modifiers (expand as needed) ---------- */
+.terminal-button {
+  padding: 2px 5px;
+  margin-right: 10px;
+  background-color: #00ffff;
+  color: #000;
+  font-weight: bold;
+}
 
-.card--about      { border-color: #00ffff; }
-.card--project    { border-color: #ff00ff; }
-.card--service    { border-color: #00ff7f; }
-.card--error      { border-color: #ff5555; }
-
-/* example body tweaks */
-.card--error .card-body { color: #ff5555; }
+.icon-photo img {
+  max-width: 80px;
+  height: auto;
+}

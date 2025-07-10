@@ -17,11 +17,13 @@ export default function Service() {
         <Terminal>
             <NavBar />
             <ClockBar section={"UTILITY MODULE (Service)"} />
+            {animationState && (
             <div className="fade-in">
                 <div className="wrapper">
 
                 </div>
             </div>
+            )}
         </Terminal>
     );
 }

@@ -17,11 +17,33 @@ export default function Contact() {
         <Terminal>
             <NavBar />
             <ClockBar section={"TRANSMISSION (Contact)"} />
+            {animationState && (
             <div className="fade-in">
                 <div className="wrapper">
-                    
+                    <form className="contact-form">
+                        <label>
+                            <span className="label">Name:</span>
+                            <input type="text" name="name" required />
+                        </label>
+
+                        <label>
+                            <span className="label">Email:</span>
+                            <input type="email" name="email" required />
+                        </label>
+
+                        <label>
+                            <span className="label">Message:</span>
+                            <textarea name="message" rows="8" required />
+                        </label>
+
+                        <div className="button-group">
+                            <button type="submit">{"[SEND]"}</button>
+                            <button type="button">{"[CANCEL]"}</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+            )}
         </Terminal>
     );
 }

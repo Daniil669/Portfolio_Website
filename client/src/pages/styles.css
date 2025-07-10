@@ -1,3 +1,4 @@
+/*universal fade-in and wrapper*/
 .fade-in {
     width: 100%;
     display: flex;
@@ -5,6 +6,7 @@
     align-items: center;
     opacity: 0;
     animation: fadeIn 0.2s ease-out forwards;
+    margin: 35px 0px;
 }
 
 
@@ -21,6 +23,7 @@
   }
 }
 
+/*Home page*/
 .title-subtitle-container {
     width: 89%;
     display: flex;
@@ -29,8 +32,7 @@
     align-items: center;
     border-style: dashed none;
     border-width: 4px 0;
-    border-color: #00FF66 ;
-    margin: 35px 0px;
+    border-color: #00FF66;
     gap: 35px;
     padding: 35px 0px;
 }
@@ -59,4 +61,67 @@
     font-weight: normal;
     font-size: 2rem;
     color: #00FBFE;
+}
+
+/*Contact page */
+.contact-form {
+    width: 89%;
+  font-family: 'Courier Prime', monospace;
+  color: #00FF66;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 35px;
+
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #00FF66;
+  display: inline-block;
+}
+
+input,
+textarea {
+  background: transparent;
+  color: #00ffff;
+  border: 2px solid #00FF66;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 5px #00FF66;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  font-family: 'Courier Prime', monospace;
+  color: #00ffff;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  padding: 1px 2px;
+  transition: color 0.25s ease;
+}
+
+button:hover {
+  color: #070707;
+  background-color: #00ffff;
 }

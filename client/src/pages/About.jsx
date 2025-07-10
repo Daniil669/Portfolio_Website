@@ -17,11 +17,13 @@ export default function About() {
         <Terminal>
             <NavBar />
             <ClockBar section={"BIO-LOG (About)"} />
+            {animationState && (
             <div className="fade-in">
                 <div className="wrapper">
 
                 </div>
             </div>
+            )}
         </Terminal>
     );
 }
