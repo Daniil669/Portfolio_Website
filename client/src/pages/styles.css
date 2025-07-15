@@ -15,6 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color:#00FBFE;
 }
 
 @keyframes fadeIn {
@@ -122,6 +123,136 @@ button {
 }
 
 button:hover {
+  color: #070707;
+  background-color: #00ffff;
+}
+
+/*About page*/
+section {
+  width: 89%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 2px #00FF66 dashed;
+  border-radius: 2px;
+  padding: 20px;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+.main-info {
+  flex-direction: row;
+  gap: 40px;
+}
+
+.image-wrapper {
+  max-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.image-wrapper img {
+  min-width: 130px;
+  max-width: 200px;
+  border: 2px solid #7B4CEB;
+}
+
+.text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.text-info {
+  display: flex;
+  gap: 10px;
+}
+
+.text-property {
+  font-weight: bold;
+  color:#00FF66;
+}
+
+.my-name {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color:#7B4CEB;
+}
+
+.languages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.languages-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.language-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.progress-bars {
+  display: flex;
+  gap: 5px;
+}
+
+.block {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(0, 251, 254, 0.5);
+}
+
+.block.filled {
+  background-color: rgba(0, 251, 254, 1);
+}
+
+.text-subcategory {
+  color: #00FF66;
+}
+
+.about-ul {
+  padding-left: 1.2rem;
+  list-style: none;
+}
+
+
+.download-cv {
+  width: 89%;
+  display: flex;
+  gap: 15px;
+  color:#00FF66;
+}
+
+.download-cv span {
+  font-size: 1.15rem;
+}
+
+.download-cv button {
+  font-family: 'Courier Prime', monospace;
+  color: #00ffff;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  padding: 1px 2px;
+  transition: color 0.25s ease;
+}
+
+/* .download-cv a {
+  color: #00FBFE;
+  text-decoration: none;
+} */
+
+.download-cv button:hover {
   color: #070707;
   background-color: #00ffff;
 }

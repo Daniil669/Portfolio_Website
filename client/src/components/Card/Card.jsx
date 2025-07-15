@@ -1,27 +1,15 @@
 import { useLocation } from 'react-router-dom';
 import './card.css';
-import Person from '../../assets/Person.svg'
+import Globe from '../../assets/Globe.svg'
 
 export default function Card({ page }) {
-  // optionally auto-detect page from route
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const data = {icon: Person, description: [
-                "Frontend with React, JavaScript",
-                "Backend using Flask, Django, Gin, Spring Boot, Fast API",
-                "REST APIs and JSON-based endpoints",
-                "Docker, CI/CD workflows, GitHub Actions, environment configuration"
-            ],
-            title: "Full-Stack Web Development"}
-
-  const isAbout = page === 'about' || currentPath.includes('/about');
-  const isProjects = page === 'projects' || currentPath.includes('/projects');
-  const isServices = page === 'services' || currentPath.includes('/services');
 
   return (
     <article className={`card ${page}`}>
-      {/* Icon or photo */}
+      {/* Icon or photo
       {data.icon && (
         <div className='icon-photo'>
           <img src={data.icon} alt="icon" />
@@ -31,36 +19,38 @@ export default function Card({ page }) {
         <div className='icon-photo'>
           <img src={data.photo} alt="profile" />
         </div>
-      )}
+      )} */}
 
       {/* Text Section */}
       <div className="text-button">
         <div className="text">
-          {data.title && <p className="title">{data.title}</p>}
-          {data.subtitles && data.subtitles.map((sub, i) => (
-            <p className="subtitle" key={i}>{sub}</p>
+          {data.title && <p className="title-card">{data.title}<span>{":"}</span></p>}
+          <ul className='items-list'>
+            {data.description && data.description.map((p, i) => (
+            <li className="paragraph-card" key={i}>{p}</li>
           ))}
-          {data.description && data.description.map((p, i) => (
-            <p className="paragraph" key={i}>{p}</p>
-          ))}
+          </ul>
         </div>
 
         {/* Buttons Section */}
-        {data.buttons && (
-          <div className="button-group">
-            {data.buttons.map((btn, i) => (
+          <div className="button-group-card">
               <a
-                key={i}
-                href={btn.href}
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="terminal-button"
+                className="terminal-button-card"
               >
-                [{btn.label}]
+                {"[DEMO]"}
               </a>
-            ))}
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="terminal-button-card"
+              >
+                {"[SOURCE CODE]"}
+              </a>
           </div>
-        )}
       </div>
     </article>
   );

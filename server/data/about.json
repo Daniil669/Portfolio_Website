@@ -4,9 +4,9 @@
   "status": "Final Year BSc in Software Engineering",
   "location": "Vaasa, Finland",
   "linguistic_capabilities": [
-    "English (Fluent)",
-    "Russian (Native)",
-    "Finnish (Basics)"
+    {"language": "English (Fluent)", "level": 4},
+    {"language": "Russian (Native)", "level": 5},
+    {"language": "Finnish (Basics)", "level": 1}
   ],
   "professional_summary": "I like technology — building it, using it, and solving real-world problems with it. I work best when I’m part of a team, planning and implementing smart solutions. With experience ranging from freelance projects to working kitchens, I’ve built skills in adaptability, communication, and fast learning. Now, I’m looking for a role where I can grow as a software engineer and make an impact.",
   "technical_skills": {

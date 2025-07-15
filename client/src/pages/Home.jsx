@@ -11,7 +11,10 @@ export default function Home() {
 
     useEffect(()=>{
         if(showAnimation[1])
-        resetAnimation()
+        {
+            resetAnimation()
+        }
+        
     }, [])
 
     return (

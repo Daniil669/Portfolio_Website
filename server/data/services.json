@@ -7,14 +7,20 @@
         "Backend using Flask, Django, Gin, Spring Boot, Fast API",
         "REST APIs and JSON-based endpoints",
         "Docker, CI/CD workflows, GitHub Actions, environment configuration"
-      ]
+      ],
+      "tags": [],
+      "meta": {},
+      "links": {}
     },
     {
       "title": "Mobile App Prototyping",
       "description": [
         "React Native interfaces",
         "Ideal for small MVPs, utility apps, or hybrid deployment"
-      ]
+      ],
+      "tags": [],
+      "meta": {},
+      "links": {}
     },
     {
       "title": "API Integration & Backend Logic",
@@ -22,14 +28,20 @@
         "Flask or Node.js REST API design",
         "Secure form handling, database connectivity",
         "MongoDB, SQL (MySQL/SQLite)"
-      ]
+      ],
+      "tags": [],
+      "meta": {},
+      "links": {}
     },
     {
       "title": "Agile-Ready Workflow",
       "description": [
         "Comfortable using Jira, Git, and collaborative tools",
         "Can work in sprints, plan deliverables, and track issues"
-      ]
+      ],
+      "tags": [],
+      "meta": {},
+      "links": {}
     },
     {
       "title": "MVP / Prototype Building",
@@ -37,7 +49,10 @@
         "Use Figma for rapid wireframing",
         "Build a working demo to test or pitch ideas",
         "Ideal for early-stage concepts or classroom-to-reality transitions"
-      ]
+      ],
+      "tags": [],
+      "meta": {},
+      "links": {}
     }
   ]
 }

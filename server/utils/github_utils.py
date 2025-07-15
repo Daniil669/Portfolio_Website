@@ -95,14 +95,17 @@ async def return_data_format(repos, header, prof_name):
             languages, description = await asyncio.gather(languages_task, description_task)
 
             final_repo_info = {
-                'name': repo['name'],
-                'main language': repo['language'], # fallback for languages
-                'languages': languages, # fallback for techstack
+                'title': repo['name'],
                 'description': description,
-                'source code': repo['html_url'],
-                'created': repo['created_at'],
-                'last update': repo['updated_at'],
-                'demo': ""
+                'tags': languages if languages else [repo['language']],
+                'meta': {
+                    'created': repo['created_at'],
+                    'last update': repo['updated_at']
+                },
+                'links': {
+                    'source code': repo['html_url'],
+                    'demo': "" # check if it's possible to retrieve link form github api or set up seperate file
+                }
             }
             return_data.append(final_repo_info)
     return return_data

@@ -10,7 +10,10 @@ export default function Service() {
 
     useEffect(()=>{
         if(showAnimation[1])
-        resetAnimation()
+        {
+            resetAnimation()
+        }
+        
     }, [])
 
     return (

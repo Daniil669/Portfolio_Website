@@ -10,6 +10,8 @@
   background-color: rgba(7, 7, 7, 0.8);
   z-index: 10;
   backdrop-filter: blur(1px);
+  padding: 0px;
+  margin: 0px;
      /* leave space for wrapper padding */
 }
 

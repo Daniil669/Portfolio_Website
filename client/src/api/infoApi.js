@@ -4,8 +4,8 @@ const API_BASE = import.meta.env.VITE_API_BASE
 
 const about_api = async () => {
     try{
-    const response = await axios.get(`${API_BASE}/api/info/about`)
-    const result = response.data
+    const response = await axios.get(`${API_BASE}/api/info/about`);
+    const result = response.data;
     return result
     }catch(error){
         console.log(error)

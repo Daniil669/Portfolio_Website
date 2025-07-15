@@ -1,37 +1,60 @@
 .card {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   width: 89%;
   border: 2px #00FF66 dashed;
   border-radius: 2px;
   gap: 20px;
+  padding: 20px;
   font-family: 'Courier Prime', monospace;
   background-color: transparent;
   color: #00ffff;
 }
 
-.title {
-  font-weight: bold;
-  color: #00FF66;
-}
-
-.card.about { background: rgba(0,0,0,0.5); }
-.card.services .paragraph { color: #00ffff; }
-.card.projects .button-group a {
-  color: #00ffff;
-  background: transparent;
-  text-decoration: none;
-}
-
-.terminal-button {
-  padding: 2px 5px;
-  margin-right: 10px;
-  background-color: #00ffff;
-  color: #000;
-  font-weight: bold;
+/* .icon-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 10%;
 }
 
 .icon-photo img {
-  max-width: 80px;
-  height: auto;
+  width: 60px;
+} */
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.items-list {
+  padding: 10px;
+}
+
+.title-card {
+  font-weight: bold;
+  color: #00FF66;
+  display: inline-block;
+}
+
+.button-group-card {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  padding-top: 30px;
+}
+
+.terminal-button-card {
+  font-size: 1rem;
+  color: #00ffff;
+  transition: color 0.25s ease;
+}
+
+.terminal-button-card:hover{
+  color: #070707;
+  background-color: #00ffff;
 }

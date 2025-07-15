@@ -9,8 +9,10 @@ export default function Contact() {
     const animationState = showAnimation[1];
 
     useEffect(()=>{
-        if(showAnimation[1])
-        resetAnimation()
+        if(showAnimation[1]) {
+            resetAnimation()
+        }
+        
     }, [])
 
     return (

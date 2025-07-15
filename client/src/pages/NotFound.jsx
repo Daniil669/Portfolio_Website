@@ -9,9 +9,13 @@ export default function NotFound() {
         const animationState = showAnimation[1];
     
         useEffect(()=>{
-            if(showAnimation[1])
+        if(showAnimation[1])
+        {
             resetAnimation()
-        }, [])
+        }
+        
+    }, [])
+    
     return (
         <Terminal>
             <ClockBar section={"404"}/>
