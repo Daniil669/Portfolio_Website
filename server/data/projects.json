@@ -3,28 +3,28 @@
     {
       "title": "Local Business Web Shop",
       "description": ["Real-world web shop built for a local skate gear brand."],
-      "tags": ["freelance"],
+      "tags": ["freelance project"],
       "meta": {},
       "links": {}
     },
     {
       "title": "Personal Projects",
       "description": ["Personal tools, hobby apps, and tech experiments."],
-      "tags": ["personal"],
+      "tags": ["personal github"],
       "meta": {},
       "links": {}
     },
     {
       "title": "University Projects",
       "description":[ "Coursework and assignments from academic studies."],
-      "tags": ["university"],
+      "tags": ["university github"],
       "meta": {},
       "links": {}
     },
     {
       "title": "Coming Soon",
       "description": ["New interactive projects will be added shortly."],
-      "tags": ["coming_soon"],
+      "tags": [],
       "meta": {},
       "links": {}
     }

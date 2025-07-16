@@ -3,9 +3,11 @@ import ClockBar from './../components/ClockBar/ClockBar.jsx';
 import NavBar from './../components/NavBar/NavBar.jsx';
 import { useEffect, useState } from 'react';
 import { useAnimation } from '../context/AnimationContext.jsx';
-import { about_api, about_photo_api } from '../api/infoApi.js';
+import { about_api, about_photo_api, cv_api } from '../api/infoApi.js';
+import download from "downloadjs";
 
 export default function About() {
+  const [loading, setLoading] = useState(false);
   const { showAnimation, resetAnimation } = useAnimation();
   const animationState = showAnimation[1];
   const [aboutData, setAboutData] = useState(null);
@@ -21,11 +23,19 @@ export default function About() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (aboutData || photoLink) {
-      console.log(`Photo link ${photoLink}\nAbout Data ${JSON.stringify(aboutData)}`);
+  const handleDownloadCV = async () => {
+    setLoading(true);
+    try{
+    const dataLink = await cv_api(); // blob
+    let fileName = "Test.pdf";
+    download(dataLink, fileName);
+    } catch (error) {
+      console.log("CV download failed: " + error);
+    } finally {
+      setLoading(false)
     }
-  }, [photoLink, aboutData]);
+
+  }
 
   useEffect(() => {
     if (showAnimation[1]) {
@@ -120,11 +130,9 @@ export default function About() {
               <p className='text-property'>CURRENTLY LEARNING:</p>
               <ul className='about-ul'>{aboutData.currently_learning.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
             </section>
-
             <div className="download-cv">
               <p><span>{">>"}</span> Download CV</p>
-              <button>{"[DOWNLOAD]"}</button>
-              {/* <button><a href="/cv.pdf" download>{"[DOWNLOAD]"}</a></button> */}
+              <button onClick={()=>{handleDownloadCV()}} disabled={loading}>{loading ? "[DOWNLOADING...]" : "[DOWNLOAD]"}</button>
             </div>
           </div>
         </div>

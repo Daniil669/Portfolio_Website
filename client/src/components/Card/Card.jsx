@@ -2,29 +2,22 @@ import { useLocation } from 'react-router-dom';
 import './card.css';
 import Globe from '../../assets/Globe.svg'
 
-export default function Card({ page }) {
+export default function Card({data}) {
   const location = useLocation();
   const currentPath = location.pathname;
 
 
   return (
-    <article className={`card ${page}`}>
-      {/* Icon or photo
-      {data.icon && (
+    <article className={`card`}>
+      {/* { && (
         <div className='icon-photo'>
-          <img src={data.icon} alt="icon" />
-        </div>
-      )}
-      {isAbout && data.photo && (
-        <div className='icon-photo'>
-          <img src={data.photo} alt="profile" />
+          
         </div>
       )} */}
-
-      {/* Text Section */}
       <div className="text-button">
         <div className="text">
           {data.title && <p className="title-card">{data.title}<span>{":"}</span></p>}
+            {data.tags && data.tags.map(item=>{return <span>{item+" "}</span>})}
           <ul className='items-list'>
             {data.description && data.description.map((p, i) => (
             <li className="paragraph-card" key={i}>{p}</li>
@@ -32,7 +25,6 @@ export default function Card({ page }) {
           </ul>
         </div>
 
-        {/* Buttons Section */}
           <div className="button-group-card">
               <a
                 href="#"

@@ -18,10 +18,10 @@ def receive_contact_message():
     routes_logger.info("Contact_message endpoint was called.")
     data = request.get_json(silent=True)
 
-    # UNCOMMENT
-    # if not verify_captcha(data.get('g-recaptcha-response', ''), request.remote_addr):
-    #     routes_logger.warning('Warning: Captcha failed.')
-    #     return jsonify({'error': 'Captcha failed.'}), 403
+    
+    if not verify_captcha(data.get('captchaTocken', ''), request.remote_addr):
+        routes_logger.warning('Warning: Captcha failed.')
+        return jsonify({'error': 'Captcha failed.'}), 403
 
     if not data:
         routes_logger.warning("Warning in contact_route: Invalid or mission JSON")
@@ -30,6 +30,11 @@ def receive_contact_message():
     name = sanitize(data.get('name', ''))
     email = sanitize(data.get('email', ''))
     message = data.get('message', '').strip()
+
+    #check length of name email and message
+    if (len(name) < 2 or len(name) > 50) or (len(email) < 2 or len(email) > 100) or (len(message) < 100 or len(message) > 700):
+        routes_logger.error("Error in contact_route: Ivalid input.")
+        return jsonify({'error': 'Invalid input.'}), 400
 
     if not name or not email or not message or not check_email_validity(email):
         routes_logger.error("Error in contact_route: Ivalid input.")
