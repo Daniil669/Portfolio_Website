@@ -12,7 +12,7 @@ It features animated transitions, dynamic project sections, and GitHub integrati
 
 ## Demo
 
-google.com
+[Google](google.com)
 
 ---
 
