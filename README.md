@@ -10,6 +10,12 @@ It features animated transitions, dynamic project sections, and GitHub integrati
 
 ---
 
+## Demo
+
+(google.com)
+
+---
+
 ## 🚀 Overview
 
 This portfolio was built as a fully custom project with a retro-themed terminal UI, designed in Figma and developed using Agile-style whiteboarding and component-based architecture.
