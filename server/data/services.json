@@ -25,7 +25,7 @@
     {
       "title": "API Integration & Backend Logic",
       "description": [
-        "Flask or Node.js REST API design",
+        "Flask, Spring Boot or other backend frameworks REST API design",
         "Secure form handling, database connectivity",
         "MongoDB, SQL (MySQL/SQLite)"
       ],
@@ -48,7 +48,7 @@
       "description": [
         "Use Figma for rapid wireframing",
         "Build a working demo to test or pitch ideas",
-        "Ideal for early-stage concepts or classroom-to-reality transitions"
+        "Ideal for early-stage concepts"
       ],
       "tags": [],
       "meta": {},

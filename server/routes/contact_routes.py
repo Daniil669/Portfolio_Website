@@ -19,7 +19,7 @@ def receive_contact_message():
     data = request.get_json(silent=True)
 
     
-    if not verify_captcha(data.get('captchaTocken', ''), request.remote_addr):
+    if not verify_captcha(data.get('captchaToken', ''), request.remote_addr):
         routes_logger.warning('Warning: Captcha failed.')
         return jsonify({'error': 'Captcha failed.'}), 403
 

@@ -9,6 +9,7 @@ const about_api = async () => {
     return result
     }catch(error){
         console.log(error)
+        return null
     }
 }
 
@@ -19,6 +20,7 @@ const about_photo_api = async () => {
     return result
     } catch(error){
         console.log(error)
+        return null
     }
 }
 
@@ -29,6 +31,7 @@ const projects_api = async () => {
     return result
     }catch(error){
         console.log(error)
+        return null
     }
 }
 
@@ -39,6 +42,7 @@ const freelance_project_api = async () => {
         return result
     } catch (error) {
         console.log(error)
+        return null
     }
 }
 
@@ -49,6 +53,7 @@ const services_api = async () => {
         return result
     } catch (error) {
         console.log(error)
+        return null
     }
 }
 
@@ -59,6 +64,7 @@ const cv_api = async () => {
         return result
     } catch (error) {
         console.log(error)
+        return null
     }
 }
 

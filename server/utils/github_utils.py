@@ -72,9 +72,17 @@ async def fetch_parse_readme(repo, username, session):
             data = base64.b64decode(response_json['content']).decode('utf-8')
             html_format = markdown.markdown(data)
             soup = BeautifulSoup(html_format, "html.parser")
-            description = soup.find("p")
+            description = soup.find("p").get_text()
+            header_tag = soup.find("h2").get_text(strip=True).lower()
+            demo_link = (
+                header_tag.find_next_sibling("p").find("a")["href"]
+                if header_tag and header_tag.get_text(strip=True).lower() == "demo"
+                and header_tag.find_next_sibling("p")
+                and header_tag.find_next_sibling("p").find("a")
+                else ""
+)
             if description:
-                return description.get_text()
+                return {"description": description, "demo": demo_link}
             return ""
     except Exception as e:
         utils_logger.error(f"Error in fetch_parse_readme: str(e)")
@@ -96,7 +104,7 @@ async def return_data_format(repos, header, prof_name):
 
             final_repo_info = {
                 'title': repo['name'],
-                'description': description,
+                'description': description["description"],
                 'tags': languages if languages else [repo['language']],
                 'meta': {
                     'created': repo['created_at'],
@@ -104,7 +112,7 @@ async def return_data_format(repos, header, prof_name):
                 },
                 'links': {
                     'source code': repo['html_url'],
-                    'demo': "" # check if it's possible to retrieve link form github api or set up seperate file
+                    'demo': description["demo"] if description["demo"] else "" # check if it's possible to retrieve link form github api or set up seperate file
                 }
             }
             return_data.append(final_repo_info)
