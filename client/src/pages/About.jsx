@@ -131,7 +131,7 @@ export default function About() {
               <ul className='about-ul'>{aboutData.currently_learning.map((item, idx) => <li key={idx}>{item}</li>)}</ul>
             </section>
             <div className="download-cv">
-              <p><span>{">>"}</span> Download CV</p>
+              <p><span>{">>"}</span> Download my CV</p>
               <button onClick={()=>{handleDownloadCV()}} disabled={loading}>{loading ? "[DOWNLOADING...]" : "[DOWNLOAD]"}</button>
             </div>
           </div>

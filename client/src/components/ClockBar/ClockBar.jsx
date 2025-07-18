@@ -1,28 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Typewriter } from 'react-simple-typewriter'
 import './clockBar.css'
 import { useAnimation } from "../../context/AnimationContext";
 
-/**
- * Props
- *  • section     (string)  – top-level page label, e.g. "ABOUT"
- *  • subsection  (string)  – optional secondary label
- *  • showBack    (bool)    – render ← button when true
- *  • backTarget  (string)  – path for navigate(-1) fallback
- *  • className   (string)  – extra classes
- */
-
-export default function ClockBar({
-  section,
-  subsection = "",
-  showBack = false,
-  backTarget = -1,          // default: history back
-  className = "",
-}) {
-
-  const navigate = useNavigate();
-
+export default function ClockBar({section}) {
   const {showAnimation, setShowAnimation} = useAnimation();
 
   const handleCursor = () => {
@@ -48,22 +29,7 @@ export default function ClockBar({
   const dateStr = now.toLocaleDateString();
 
   return (
-    <header className={`clock-bar ${className}`}>
-      {/* back button (left) */}
-      {showBack && (
-        <button
-          className="back-btn"
-          onClick={() =>
-            typeof backTarget === "number"
-              ? navigate(backTarget)
-              : navigate(backTarget)
-          }
-          aria-label="Go back"
-        >
-          {"[BACK]"}
-        </button>
-      )}
-
+    <header className={`clock-bar`}>
       <div className="clock-time">
         <span className="date">{dateStr}</span>
         <span className="date-time-bar">|</span>
@@ -81,15 +47,7 @@ export default function ClockBar({
           loop={1}
           />
           </span></div>
-  
-        {subsection && <span className="subsection"><Typewriter
-          words={[subsection]}
-          typeSpeed={35}
-          cursor
-          cursorStyle="_"
-        /></span>}
       </div>
-
     </header>
   );
 }

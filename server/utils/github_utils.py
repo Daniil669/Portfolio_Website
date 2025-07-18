@@ -56,7 +56,7 @@ async def fetch_repo_languages(repo, username, session):
             data = await response.json()
             return list(data.keys()) if data else []
     except Exception as e:
-        utils_logger.error(f"Error in fetch_repo_languages: f{str(e)}")
+        utils_logger.error(f"Error in fetch_repo_languages: {str(e)}")
         return []
 
 
@@ -67,26 +67,26 @@ async def fetch_parse_readme(repo, username, session):
             utils_logger.info("Request to get GitHub repos readme has been made.")
             if response.status != 200:
                 utils_logger.warning(f"Warning in fetch_parse_readme. No read me for {repo}")
-                return ""
+                return {"description": "", "demo": ""}
             response_json = await response.json()
             data = base64.b64decode(response_json['content']).decode('utf-8')
             html_format = markdown.markdown(data)
             soup = BeautifulSoup(html_format, "html.parser")
             description = soup.find("p").get_text()
-            header_tag = soup.find("h2").get_text(strip=True).lower()
+            header_tag = soup.find("h2")
             demo_link = (
                 header_tag.find_next_sibling("p").find("a")["href"]
                 if header_tag and header_tag.get_text(strip=True).lower() == "demo"
                 and header_tag.find_next_sibling("p")
                 and header_tag.find_next_sibling("p").find("a")
                 else ""
-)
+            )
             if description:
                 return {"description": description, "demo": demo_link}
-            return ""
+            return {"description": "", "demo": ""}
     except Exception as e:
-        utils_logger.error(f"Error in fetch_parse_readme: str(e)")
-        return ""
+        utils_logger.error(f"Error in fetch_parse_readme: {str(e)}")
+        return {"description": "", "demo": ""}
 
 async def return_data_format(repos, header, prof_name):
     global ignored_repos
@@ -104,15 +104,15 @@ async def return_data_format(repos, header, prof_name):
 
             final_repo_info = {
                 'title': repo['name'],
-                'description': description["description"],
+                'description': description.get("description", ""),
                 'tags': languages if languages else [repo['language']],
                 'meta': {
                     'created': repo['created_at'],
                     'last update': repo['updated_at']
                 },
                 'links': {
-                    'source code': repo['html_url'],
-                    'demo': description["demo"] if description["demo"] else "" # check if it's possible to retrieve link form github api or set up seperate file
+                    'source': repo['html_url'],
+                    'demo': description.get("demo", "") # check if it's possible to retrieve link form github api or set up seperate file
                 }
             }
             return_data.append(final_repo_info)

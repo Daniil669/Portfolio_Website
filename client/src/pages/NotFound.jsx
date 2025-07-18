@@ -21,7 +21,7 @@ export default function NotFound() {
             <ClockBar section={"404"}/>
             {animationState && (
             <div className='fade-in'>
-            <div style={{width: "89%", display: "flex", flexDirection: "column", gap: "35px", margin: "35px 0px"}}>
+            <div style={{width: "89%", display: "flex", flexDirection: "column", gap: "35px", margin: "0px"}}>
             
             <div>
                 <p>{"FILE: /nonexistent-page.js"}</p>

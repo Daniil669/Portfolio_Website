@@ -22,8 +22,6 @@ export default function Contact() {
     const [message, setMessage] = useState("")
     const [serverAnswer, setServerAnswer] = useState("")
 
-    // TODO
-    // 1. Set limits for captcha; 2. Clear all the fields when submitted; 3. Display message if success or failer from backend
 
     const handleCaptchaChange = (value) => {
         if (captchaAttempts >= MAX_CAPTCHA_ATTEMPTS){

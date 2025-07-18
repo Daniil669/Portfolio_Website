@@ -10,9 +10,10 @@
   font-family: 'Courier Prime', monospace;
   background-color: transparent;
   color: #00ffff;
+  margin-bottom: 35px;
 }
 
-/* .icon-photo {
+.icon-photo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +21,8 @@
 }
 
 .icon-photo img {
-  width: 60px;
-} */
+  width: 50px;
+}
 
 .text {
   display: flex;
@@ -38,6 +39,12 @@
   font-weight: bold;
   color: #00FF66;
   display: inline-block;
+}
+
+.title-github {
+  font-weight: normal;
+  color:#00ffff;
+  padding: 5px 0px 20px 0px;
 }
 
 .button-group-card {

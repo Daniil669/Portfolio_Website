@@ -247,12 +247,56 @@ section {
   transition: color 0.25s ease;
 }
 
-/* .download-cv a {
-  color: #00FBFE;
-  text-decoration: none;
-} */
-
 .download-cv button:hover {
+  color: #070707;
+  background-color: #00ffff;
+}
+
+/* Projects */
+.subsection-wrapper {
+  width: 89%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.subsection-text {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  color:#00FF66;
+}
+
+.subsection {
+  font-size: 1.25rem;
+}
+
+.button-subsection {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  color:#00FF66;
+
+}
+
+.button-subsection span {
+    font-size: 1.25rem;
+}
+
+.button-subsection button {
+  background: transparent;
+  border: none;
+  color: #00ffff;
+  font-size: 1rem;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+  transition: opacity 0.25s;
+}
+.button-subsection button:hover,
+.button-subsection button:focus-visible {
   color: #070707;
   background-color: #00ffff;
 }
