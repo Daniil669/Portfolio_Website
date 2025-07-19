@@ -1,6 +1,6 @@
 *, ::after, ::before {
-    margin: 0px;
-    padding: 0px;
+    margin: 0.0rem;
+    padding: 0.0rem;
     box-sizing: border-box;
 }
 
@@ -22,7 +22,7 @@ body {
 
 a {
     color: #00FF66;
-    padding: 1px 2px;
+    padding: 0.0625rem 0.125rem;
     text-decoration: none;
     transition: color 0.25s ease;
 }
@@ -37,3 +37,48 @@ button, a, input, textarea {
     font-family: inherit;
 }
 
+/*Media Queries*/
+
+/*TODO
+1. ClockBar
+2. NavBar
+3. Content layout
+4. Cards
+5. Loader
+6. 404 page */
+
+/*2K: 2048 x 1080 pixels; 4K or Ultra HD: 3840 x 2160 pixels*/
+
+html {
+  font-size: 16px; /* Default */
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 3000px) {
+  html {
+    font-size: 24px;
+  }
+}

@@ -2,15 +2,16 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 89%;
-  border: 2px #00FF66 dashed;
-  border-radius: 2px;
-  gap: 20px;
-  padding: 20px;
+  max-width: 100%;
+  border: 0.125rem #00FF66 dashed;
+  border-radius: 0.125rem;
+  gap: 1.25rem;
+  padding: 1.25rem;
   font-family: 'Courier Prime', monospace;
   background-color: transparent;
   color: #00ffff;
-  margin-bottom: 35px;
+  flex: 1 1 100%;
+  /* margin-bottom: 2.1875rem; */
 }
 
 .icon-photo {
@@ -21,7 +22,7 @@
 }
 
 .icon-photo img {
-  width: 50px;
+  width: 3.125rem;
 }
 
 .text {
@@ -32,7 +33,7 @@
 }
 
 .items-list {
-  padding: 10px;
+  padding: 0.625rem;
 }
 
 .title-card {
@@ -44,15 +45,15 @@
 .title-github {
   font-weight: normal;
   color:#00ffff;
-  padding: 5px 0px 20px 0px;
+  padding: 0.3125rem 0.0rem 1.25rem 0.0rem;
 }
 
 .button-group-card {
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  gap: 30px;
-  padding-top: 30px;
+  gap: 1.875rem;
+  padding-top: 1.875rem;
 }
 
 .terminal-button-card {
@@ -64,4 +65,17 @@
 .terminal-button-card:hover{
   color: #070707;
   background-color: #00ffff;
+}
+
+@media screen and (max-width: 48rem) {
+  .card {
+  flex-direction: column;
+  }
+}
+
+@media (min-width: 1920px) {
+    .card {
+    flex: 1 1 calc(50% - 1.5rem);   /* 2 cards */
+    max-width: calc(50% - 1.5rem);
+  }
 }

@@ -1,0 +1,41 @@
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.loader-text {
+  font-size: 1.5rem;
+  color:#00FF66;
+}
+
+.loading-bar {
+  width: 18.75rem;
+  height: 1.25rem;
+  border-top: 0.125rem dashed #00FF66;
+  border-bottom: 0.125rem dashed #00FF66;;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.125rem;
+}
+
+.moving-bar {
+  width: 30%;
+  height: 100%;
+  background-color: #00FF66;
+  position: absolute;
+  left: -30%;
+  animation: slide 1.5s linear infinite;
+  border-radius: 0.125rem;
+}
+
+@keyframes slide {
+  0% {
+    left: -30%;
+  }
+  100% {
+    left: 100%;
+  }
+}

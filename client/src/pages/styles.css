@@ -6,16 +6,16 @@
     align-items: center;
     opacity: 0;
     animation: fadeIn 0.2s ease-out forwards;
-    margin: 35px 0px;
+    margin: 2.1875rem 0.0rem;
 }
 
 
 .wrapper {
-    width: 100%;
+    width: 89%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     color:#00FBFE;
+    gap: 1.5rem;
 }
 
 @keyframes fadeIn {
@@ -26,16 +26,16 @@
 
 /*Home page*/
 .title-subtitle-container {
-    width: 89%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-style: dashed none;
-    border-width: 4px 0;
+    border-width: 0.25rem 0;
     border-color: #00FF66;
-    gap: 35px;
-    padding: 35px 0px;
+    gap: 2.1875rem;
+    padding: 2.1875rem 0.0rem;
 }
 
 .title, .subtitle {
@@ -43,18 +43,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 35px;
+    gap: 2.1875rem;
 }
 
 .subtitle {
-    gap: 15px;
+    gap: 0.9375rem;
 }
 
 .title h1 {
     font-family: "Press Start 2P", system-ui;
     font-size: 2.3rem;
     color: #7B4CEB;
-    text-shadow: #fff 0px 5px;
+    text-shadow: #fff 0.0rem 0.3125rem;
 }
 
 .subtitle h2 {
@@ -62,6 +62,16 @@
     font-weight: normal;
     font-size: 2rem;
     color: #00FBFE;
+}
+
+@media (max-width: 480px) {
+  .title h1 {
+    font-size: 1.7rem;
+    text-shadow: #fff 0.0rem 0.2125rem;
+  }
+  .subtitle h2 {
+    font-size: 1.5rem;
+  }
 }
 
 /*Contact page */
@@ -72,13 +82,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 35px;
+  gap: 2.1875rem;
 
 }
 
 .label {
   font-weight: bold;
-  margin-bottom: 15px;
+   margin-bottom: 0.9375rem;
   color: #00FF66;
   display: inline-block;
 }
@@ -87,9 +97,9 @@ input,
 textarea {
   background: transparent;
   color: #00ffff;
-  border: 2px solid #00FF66;
+  border: 0.125rem solid #00FF66;
   width: 100%;
-  padding: 10px;
+  padding: 0.625rem;
   font-size: 1rem;
   font-family: inherit;
   outline: none;
@@ -101,13 +111,13 @@ textarea {
 
 input:focus,
 textarea:focus {
-  box-shadow: 0 0 5px #00FF66;
+  box-shadow: 0 0 0.3125rem #00FF66;
 }
 
 .button-group {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 button {
@@ -118,7 +128,7 @@ button {
   font-size: 1rem;
   cursor: pointer;
   position: relative;
-  padding: 1px 2px;
+  padding: 0.0625rem 0.125rem;
   transition: color 0.25s ease;
 }
 
@@ -127,47 +137,55 @@ button:hover {
   background-color: #00ffff;
 }
 
+@media screen and (max-width: 48rem) {
+.captchaWrapper {
+  width: 100%;
+  transform: scale(0.8);
+  transform-origin: 0 0;
+}
+}
+
 /*About page*/
 section {
   width: 89%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: 2px #00FF66 dashed;
-  border-radius: 2px;
-  padding: 20px;
-  gap: 10px;
-  margin-bottom: 35px;
+  border: 0.125rem #00FF66 dashed;
+  border-radius: 0.125rem;
+  padding: 1.25rem;
+  gap: 0.625rem;
+  /* margin-bottom: 2.1875rem; */
 }
 
 .main-info {
   flex-direction: row;
-  gap: 40px;
+  gap: 2.5rem;
 }
 
 .image-wrapper {
-  max-width: 250px;
+  max-width: 15.625rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
 .image-wrapper img {
-  min-width: 130px;
-  max-width: 200px;
-  border: 2px solid #7B4CEB;
+  min-width: 8.125rem;
+  max-width: 12.5rem;
+  border: 0.125rem solid #7B4CEB;
 }
 
 .text-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 15px;
+  gap: 0.9375rem;
 }
 
 .text-info {
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .text-property {
@@ -184,29 +202,29 @@ section {
 .languages {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .languages-wrapper{
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .language-wrapper {
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   align-items: center;
 }
 
 .progress-bars {
   display: flex;
-  gap: 5px;
+  gap: 0.3125rem;
 }
 
 .block {
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   background-color: rgba(0, 251, 254, 0.5);
 }
 
@@ -219,7 +237,6 @@ section {
 }
 
 .about-ul {
-  padding-left: 1.2rem;
   list-style: none;
 }
 
@@ -227,7 +244,7 @@ section {
 .download-cv {
   width: 89%;
   display: flex;
-  gap: 15px;
+  gap: 0.9375rem;
   color:#00FF66;
 }
 
@@ -243,7 +260,7 @@ section {
   font-size: 1rem;
   cursor: pointer;
   position: relative;
-  padding: 1px 2px;
+  padding: 0.0625rem 0.125rem;
   transition: color 0.25s ease;
 }
 
@@ -252,20 +269,28 @@ section {
   background-color: #00ffff;
 }
 
+@media screen and (max-width: 48rem) {
+.main-info {
+  flex-direction: column;
+  align-items: center;
+}
+}
+
+
 /* Projects */
 .subsection-wrapper {
-  width: 89%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 15px;
-  margin-bottom: 25px;
+  gap: 0.9375rem;
+  margin-bottom: 1.5625rem;
 }
 
 .subsection-text {
   width: 100%;
   display: flex;
-  gap: 15px;
+  gap: 0.9375rem;
   color:#00FF66;
 }
 
@@ -276,7 +301,7 @@ section {
 .button-subsection {
   width: 100%;
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   color:#00FF66;
 
 }
@@ -299,4 +324,14 @@ section {
 .button-subsection button:focus-visible {
   color: #070707;
   background-color: #00ffff;
+}
+
+/*2K and bigger*/
+@media (min-width: 1920px) {
+  .wrapper {
+    flex-wrap: wrap;
+    flex-direction: row;      
+    justify-content: center;   
+    align-items: stretch;
+  }
 }

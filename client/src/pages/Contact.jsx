@@ -145,11 +145,13 @@ export default function Contact() {
                             <textarea name="message" value={message} onChange={(e) => setMessage(e.target.value)} rows="8" minLength="100" maxLength="700" required />
                             <p>{message.length}/700</p>
                         </label>
+                        <div className='captchaWrapper'>
                         <ReCAPTCHA
                         ref={captchaRef}
                         sitekey={import.meta.env.VITE_SITE_KEY_DEV}
                         onChange={handleCaptchaChange}
                         />
+                        </div>
                         <div className="button-group">
                             {coolDown && Date.now() < coolDown && (
                             <p style={{color: "orange"}}>You’ve reached the max reCAPTCHA attempts. Try again later.</p>

@@ -10,11 +10,12 @@ import Person from '../assets/Person.svg';
 import GitHub from '../assets/GitHub.svg';
 import SearchIcon from '../assets/SearchIcon.svg';
 import '../components/Card/card.css';
-import { Typewriter } from 'react-simple-typewriter'
+import Loader from '../components/Loader/Loader.jsx'
 
 export default function Projects() {
     const {showAnimation, resetAnimation} = useAnimation();
     const animationState = showAnimation[1];
+    const [isLoading, setIsLoading] = useState(true)
 
     const [projecsSourceData, setProjectsSourceData] = useState({project_categories: []})
     const [projectsData, setProjectsData] = useState({})
@@ -29,11 +30,12 @@ export default function Projects() {
     }, [])
 
     const handleSouceSelect = async (sourceId) => {
-            setIsSourceSelected(sourceId);
-            console.log("click")
+        setIsSourceSelected(sourceId);
+        setIsLoading(true);
+        try{
         if (sourceId === "Freelance Project") {
-                const data = await freelance_project_api();
-                setProjectsData(data);
+            const data = await freelance_project_api();
+            setProjectsData(data);
         } else if (sourceId === "Personal Github") {
             const data = await projects_info_api("pers");
             setProjectsData(data);
@@ -41,11 +43,17 @@ export default function Projects() {
             const data = await projects_info_api("uni");
             setProjectsData(data);
         }
+        } catch (error) {
+            console.log(`Failed to fetch data: `, error)
+        } finally {
+            setIsLoading(false)
         }
-
+    }
+ 
     const handleBack = () => {
         setIsSourceSelected("");
         setProjectsData({});
+        setIsLoading(true);
     }
 
     useEffect(()=>{
@@ -117,7 +125,7 @@ export default function Projects() {
                         )
                         })
                     ):
-                    (projectsData["data"]?.map((item, index) => {
+                    (isLoading ? <Loader /> : projectsData["data"]?.map((item, index) => {
                         return <Card key={index} data={item} icon={null} variant='github'/>
                     })
                     )}

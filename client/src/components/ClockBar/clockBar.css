@@ -12,13 +12,13 @@
 
 /* center labels */
 .clock-labels {
-  margin-top: 15px;
+  margin-top: 0.9375rem;
 }
 .clock-bar .title {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 15px;
+  gap: 0.9375rem;
 }
 .arrow {
   font-weight: bold;
@@ -31,7 +31,7 @@
 
 /* right-side clock */
 .clock-time {
-  margin-top: 40px;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: row;
   text-align: right;
