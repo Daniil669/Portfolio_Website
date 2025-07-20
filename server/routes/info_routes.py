@@ -53,7 +53,7 @@ def get_service_info():
 def get_cv():
     try:
         routes_logger.info("Endpoint cv was called")
-        return send_from_directory('static', 'Test.pdf', as_attachment=True)
+        return send_from_directory('static', 'CV_Teaser.pdf', as_attachment=True)
     except Exception as e:
         routes_logger.error(f"Error in /cv endpoint: {str(e)}")
         return jsonify({'error': str(e)})

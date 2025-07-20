@@ -5,9 +5,9 @@ import App from './App.jsx'
 import { AnimationProvider } from './context/AnimationContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <AnimationProvider>
       <App />
     </AnimationProvider>
-  </StrictMode>,
+  // </StrictMode>
 )

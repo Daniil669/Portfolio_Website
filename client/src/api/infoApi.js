@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const API_BASE = import.meta.env.VITE_API_BASE
 
-const about_api = async () => {
+const about_api = async (options = {}) => {
     try{
-    const response = await axios.get(`${API_BASE}/api/info/about`);
+    const response = await axios.get(`${API_BASE}/api/info/about`, options);
     const result = response.data;
     return result
     }catch(error){
@@ -13,9 +13,9 @@ const about_api = async () => {
     }
 }
 
-const about_photo_api = async () => {
+const about_photo_api = async (options = {}) => {
     try {
-    const response = await axios.get(`${API_BASE}/api/info/profile_photo`, {responseType:'blob'})
+    const response = await axios.get(`${API_BASE}/api/info/profile_photo`, {responseType:'blob', ...options})
     const result = URL.createObjectURL(response.data)
     return result
     } catch(error){
@@ -24,9 +24,9 @@ const about_photo_api = async () => {
     }
 }
 
-const projects_api = async () => {
+const projects_api = async (options = {}) => {
     try{
-    const response = await axios.get(`${API_BASE}/api/info/projects`)
+    const response = await axios.get(`${API_BASE}/api/info/projects`, options)
     const result = response.data
     return result
     }catch(error){
@@ -46,9 +46,9 @@ const freelance_project_api = async () => {
     }
 }
 
-const services_api = async () => {
+const services_api = async (options = {}) => {
     try {
-        const response = await axios.get(`${API_BASE}/api/info/service`)
+        const response = await axios.get(`${API_BASE}/api/info/service`, options)
         const result = response.data
         return result
     } catch (error) {
@@ -60,8 +60,7 @@ const services_api = async () => {
 const cv_api = async () => {
     try {
         const response = await axios.get(`${API_BASE}/api/info/cv`, {responseType: 'blob'})
-        const result = URL.createObjectURL(response.data)
-        return result
+        return response.data
     } catch (error) {
         console.log(error)
         return null

@@ -1,7 +1,7 @@
 import Terminal from './../components/TerminalWrapper/Terminal.jsx'
 import ClockBar from './../components/ClockBar/ClockBar.jsx'
 import NavBar from './../components/NavBar/NavBar.jsx'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { useAnimation } from '../context/AnimationContext.jsx'
 import Card from '../components/Card/Card.jsx'
 import { projects_api, freelance_project_api} from '../api/infoApi.js'
@@ -22,26 +22,42 @@ export default function Projects() {
     const [isSourceSelected, setIsSourceSelected] = useState("")
 
     useEffect(()=>{
-        async function fetchData() {
-            const data = await projects_api();
-            setProjectsSourceData(data)
-        }
-        fetchData()
+    const controller = new AbortController();
+
+  const fetchData = async () => {
+    try {
+      const data = await projects_api({ signal: controller.signal });
+      setProjectsSourceData(data);
+    } catch (err) {
+      if (err.name === 'AbortError' || err.name === 'CanceledError') {
+        console.warn("Projects source fetch was aborted");
+      } else {
+        console.error("Error fetching project sources:", err);
+      }
+    }
+  };
+
+  fetchData();
+  return () => controller.abort(); // cleanup
     }, [])
 
     const handleSouceSelect = async (sourceId) => {
         setIsSourceSelected(sourceId);
         setIsLoading(true);
         try{
+            let data = null
         if (sourceId === "Freelance Project") {
-            const data = await freelance_project_api();
-            setProjectsData(data);
+            data = await freelance_project_api();
+            
         } else if (sourceId === "Personal Github") {
-            const data = await projects_info_api("pers");
-            setProjectsData(data);
+             data = await projects_info_api("pers");
+            
         } else if (sourceId === "University Github") {
-            const data = await projects_info_api("uni");
-            setProjectsData(data);
+             data = await projects_info_api("uni");
+            
+        }
+        if (data) {
+            setProjectsData(data)
         }
         } catch (error) {
             console.log(`Failed to fetch data: `, error)

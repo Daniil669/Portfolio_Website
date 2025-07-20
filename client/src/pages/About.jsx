@@ -14,21 +14,34 @@ export default function About() {
   const [photoLink, setPhotoLink] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const about_data = await about_api();
-      const about_photo = await about_photo_api();
+  const controller = new AbortController();
+
+  const fetchData = async () => {
+    try {
+      const about_data = await about_api({ signal: controller.signal });
+      const about_photo = await about_photo_api({ signal: controller.signal });
       setAboutData(about_data);
       setPhotoLink(about_photo);
+    } catch (err) {
+      if (err.name === 'AbortError' || err.name === 'CanceledError') {
+        console.warn('About page API call was aborted');
+      } else {
+        console.error('Error loading About page data:', err);
+      }
     }
-    fetchData();
-  }, []);
+  };
+
+  fetchData();
+  return () => controller.abort(); // Clean up on unmount
+}, []);
 
   const handleDownloadCV = async () => {
     setLoading(true);
     try{
-    const dataLink = await cv_api(); // blob
-    let fileName = "Test.pdf";
-    download(dataLink, fileName);
+    const blob = await cv_api();
+    if (blob) {
+      download(blob, "CV_Teaser.pdf", "application/pdf");
+    }
     } catch (error) {
       console.log("CV download failed: " + error);
     } finally {

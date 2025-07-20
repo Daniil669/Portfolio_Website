@@ -2,7 +2,7 @@ import Terminal from './../components/TerminalWrapper/Terminal.jsx'
 import ClockBar from './../components/ClockBar/ClockBar.jsx'
 import NavBar from './../components/NavBar/NavBar.jsx'
 import './styles.css'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useAnimation } from '../context/AnimationContext.jsx'
 
 export default function Home() {

@@ -1,6 +1,6 @@
 import Terminal from './../components/TerminalWrapper/Terminal.jsx'
 import ClockBar from './../components/ClockBar/ClockBar.jsx'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useAnimation } from '../context/AnimationContext.jsx'
 import { NavLink } from 'react-router-dom';
 

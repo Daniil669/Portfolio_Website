@@ -90,9 +90,9 @@
   color: #00FF66;
 }
 
-.slide-menu .close-button {
+/* .slide-menu .close-button {
   font-size: 1rem;
-}
+} */
 
 .menu-toggle:hover, .menu-toggle:active, .slide-menu a:active, .slide-menu a:hover {
   color:#070707;
@@ -115,7 +115,7 @@
   .nav-bar-mobile {
     position: sticky;
     top: 0;
-  z-index: 20;
+    z-index: 30;
     display: flex;
     width: 100%;
     display: flex;
@@ -126,5 +126,6 @@
   }
   .slide-menu {
     display: flex;
+    align-items: flex-start;
   }
 }

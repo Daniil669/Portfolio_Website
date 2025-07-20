@@ -17,11 +17,24 @@ export default function Service() {
     const [services, setServices] = useState({ services: [] })
 
     useEffect(()=>{
-        async function fetchData() {
-            const data = await services_api();
-            setServices(data)
-        };
-        fetchData()
+          const controller = new AbortController();
+
+  const fetchData = async () => {
+    try {
+      const data = await services_api({ signal: controller.signal });
+      setServices(data);
+    } catch (err) {
+      if (err.name === 'AbortError' || err.name === 'CanceledError') {
+        console.warn("Service data fetch aborted");
+      } else {
+        console.error("Failed to load services:", err);
+      }
+    }
+  };
+
+  fetchData();
+
+  return () => controller.abort(); // cleanup
     }, [])
 
     useEffect(()=>{

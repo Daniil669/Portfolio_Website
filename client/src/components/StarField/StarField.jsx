@@ -3,11 +3,7 @@ import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import { loadEmittersPlugin } from "tsparticles-plugin-emitters";
 import './starField.css'
-/**
- * Props
- *  active - show / hide the canvas (false on boot, loading, 404)
- *  className - optional extra class names
- */
+
 export default function Starfield({ active = true, className = "" }) {
   // load only the lightweight preset
   const init = useCallback(async (engine) => {

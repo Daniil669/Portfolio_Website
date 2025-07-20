@@ -64,6 +64,7 @@ export default function Contact() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        try {
         const data = {
             name: nameInput,
             email: emailInput,
@@ -80,18 +81,25 @@ export default function Contact() {
             return;
         }
 
-        if(!isError){
-            const answer = await contact_api(data);
-            setServerAnswer(answer);
-            setCaptchaAttempts(0)
-            setCoolDown(null)
-            setNameInput("")
-            setEmailInput("")
-            setMessage("")
-            setCaptchaValue(null)
-            captchaRef.current?.reset();
+        if (!isError) {
+            try {
+                const answer = await contact_api(data);
+                setServerAnswer(answer);
+                setCaptchaAttempts(0);
+                setCoolDown(null);
+                setNameInput("");
+                setEmailInput("");
+                setMessage("");
+                setCaptchaValue(null);
+                captchaRef.current?.reset();
+            } catch (err) {
+                console.error("Failed to send contact form:", err);
+                alert("There was an error sending your message. Please try again later.");
+            }
         }
-        
+    }catch (error) {
+        console.log("Error:", error)
+    }
     }
 
     const handleNameInput = (event) => {
@@ -126,7 +134,7 @@ export default function Contact() {
             {animationState && (
             <div className="fade-in">
                 <div className="wrapper">
-                    {serverAnswer ? <><p style={{color: "#00FF66", fontWeight: 'bold'}}>{serverAnswer}</p><button onClick={()=>{setServerAnswer("")}}>[OK]</button></> :
+                    {serverAnswer ? <div style={{width: "100%", display: "flex", flexDirection: "column", gap: "0.94rem"}}><p style={{color: "#00FF66", fontWeight: 'bold'}}>{serverAnswer}</p><button onClick={()=>{setServerAnswer("")}} style={{width: "fit-content"}}>[OK]</button></div> :
                     <form className="contact-form" onSubmit={handleSubmit}>
                         <label>
                             <span className="label">Name:</span>
