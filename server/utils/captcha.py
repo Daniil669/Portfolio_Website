@@ -12,9 +12,13 @@ def verify_captcha(captcha_token, remote_ip):
             "response": captcha_token,
             "remoteip": remote_ip
         }
-        response = requests.post(os.environ.get("API_ENDPOINT"), data=data)
+        utils_logger.info("Verifying captcha.")
+        response = requests.post(os.environ.get("API_ENDPOINT"), data=data, timeout=5)
         data = response.json()
         return data['success']
+    except requests.exceptions.Timeout:
+        utils_logger.warning("Captcha verification timed out.")
+        return False
     except Exception as e:
         utils_logger.error(f"Error in verify_captcha: {str(e)}")
         return False

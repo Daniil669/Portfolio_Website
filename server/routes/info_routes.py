@@ -1,68 +1,55 @@
 # Handles data for About, Projects, Service
-from utils.json_loader import prepare_file
 from flask import Blueprint, jsonify, send_from_directory
 from utils.log_helper import routes_logger
+from extensions import limiter
+from utils.handle_json_response import handle_json_response
 
 info_bp = Blueprint('info', __name__)
 
 
 @info_bp.route('/about', methods=['GET'])
+@limiter.limit("10 per minute")
 def get_about_info():
-    routes_logger.info("Endpoint about was called")
-    response_data = prepare_file("about.json")
-    if response_data['status']:
-        return jsonify(response_data['data']), response_data['code']
-    else:
-        routes_logger.error(f"Error in /about endpoint: {response_data['error']}")
-        return jsonify(response_data['error']), response_data['code']
+    return handle_json_response("about.json", "about")
+
 
     
 @info_bp.route('/projects', methods=['GET'])
+@limiter.limit("10 per minute")
 def get_projects_info():
-    routes_logger.info("Endpoint projects was called")
-    response_data = prepare_file("projects.json")
-    if response_data['status']:
-        return jsonify(response_data['data']), response_data['code']
-    else:
-        routes_logger.error(f"Error in /projects endpoint: {response_data['error']}")
-        return jsonify(response_data['error']), response_data['code']
+    return handle_json_response("projects.json", "projects")
 
 
 @info_bp.route('/freelance_project', methods=['GET'])
+@limiter.limit("10 per minute")
 def get_freelance_project_info():
-    routes_logger.info("Endpoint freelance project was called.")
-    response_data = prepare_file("freelance_project.json")
-    if response_data['status']:
-        return jsonify(response_data['data']), response_data['code']
-    else:
-        routes_logger.error(f"Error in /freelance_project: {response_data['error']}")
-        return jsonify(response_data['error']), response_data['code']
+    return handle_json_response("freelance_project.json", "freelance_project")
+
 
     
 @info_bp.route('/service', methods=['GET'])
+@limiter.limit("10 per minute")
 def get_service_info():
-    routes_logger.info("Endpoint service was called")
-    response_data = prepare_file("services.json")
-    if response_data['status']:
-        return jsonify(response_data['data']), response_data['code']
-    else:
-        routes_logger.error(f"Error in /service endpoint: {response_data['error']}")
-        return jsonify(response_data['error']), response_data['code']
+    return handle_json_response("services.json", "service")
+
     
 @info_bp.route('/cv', methods=['GET'])
+@limiter.limit("3 per minute")
 def get_cv():
     try:
         routes_logger.info("Endpoint cv was called")
         return send_from_directory('static', 'CV_Teaser.pdf', as_attachment=True)
     except Exception as e:
         routes_logger.error(f"Error in /cv endpoint: {str(e)}")
-        return jsonify({'error': str(e)})
+        return jsonify({'error': str(e)}), 500
     
+
 @info_bp.route('/profile_photo', methods=['GET'])
+@limiter.limit("10 per minute")
 def get_profile_photo():
     try:
         routes_logger.info("Endpoint profile_photo was called")
         return send_from_directory('static', 'profile_photo.jpg')
     except Exception as e:
         routes_logger.error(f"Error in /profile_photo endpoint: {str(e)}")
-        return jsonify({'error': str(e)})
+        return jsonify({'error': str(e)}), 500

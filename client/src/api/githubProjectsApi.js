@@ -14,11 +14,14 @@ const demos_api = async (project_name) => {
 
 const projects_info_api = async (gith_type) => {
     try {
-        const response = await axios.get(`${API_BASE}/api/github/projects_info/${gith_type}?refresh=true`)
+        const response = await axios.get(`${API_BASE}/api/github/projects_info/${gith_type}`)
         const result = response.data
         return result
     } catch (error) {
-        console.log(error)
+        if (error.response && error.response.status === 429) {
+            return { error: "GitHub project data rate limit exceeded. Please wait and try again." };
+        }
+        return { error: "Failed to load project info." };
     }
 }
 

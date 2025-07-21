@@ -64,6 +64,10 @@ export default function Contact() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!nameInput || !emailInput || !message || !captchaValue) {
+            alert("Please fill all fields and verify the CAPTCHA");
+            return;
+        }
         try {
         const data = {
             name: nameInput,
@@ -94,7 +98,7 @@ export default function Contact() {
                 captchaRef.current?.reset();
             } catch (err) {
                 console.error("Failed to send contact form:", err);
-                alert("There was an error sending your message. Please try again later.");
+                setServerAnswer("There was an error sending your message. Please try again later.");
             }
         }
     }catch (error) {

@@ -6,8 +6,10 @@ from routes.info_routes import info_bp
 from routes.github_routes import github_bp
 from routes.contact_routes import contact_bp
 from utils.log_helper import app_logger
-from extensions import cache
+from extensions import cache, limiter
 from config import DevelopmentConfig, ProductionConfig
+
+
 
 dotenv.load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 
@@ -18,7 +20,11 @@ if os.environ.get("FLASK_ENV", "development") == "development":
 else:
     app.config.from_object(ProductionConfig)
 
+
+
 cache.init_app(app)
+
+limiter.init_app(app=app)
 
 cors = flask_cors.CORS(app, resources={r"/api/*": {"origins": app.config["CORS_ORIGINS"]}}) #change localhost
 
@@ -30,5 +36,5 @@ app_logger.info("The app is initialized.")
 
 if __name__ == "__main__":
     
-    app.run(debug=True)
+    app.run(debug=app.config["DEBUG"])
     

@@ -1,31 +1,37 @@
 from flask import Blueprint, request, jsonify
-import re
 from utils.save_to_db import save_to_db
 from utils.send_email import send_to_email
 from utils.log_helper import routes_logger
 from utils.captcha import verify_captcha
+from extensions import limiter
+from email_validator import validate_email, EmailNotValidError
 
 contact_bp = Blueprint('contact', __name__)
 
 def check_email_validity(email):
-    return re.match(r"[^@]+@[^@]+\.[^@]+", email)
+    try:
+        validate_email(email)
+        return True
+    except EmailNotValidError:
+        return False
+
 
 def sanitize(text):
     return text.replace('\r', '').replace('\n', '').strip()
 
 @contact_bp.route('/contact_message', methods=['POST'])
+@limiter.limit("3 per minute")
 def receive_contact_message():
     routes_logger.info("Contact_message endpoint was called.")
     data = request.get_json(silent=True)
 
+    if not data:
+        routes_logger.warning("Warning in contact_route: Invalid or mission JSON")
+        return jsonify({'error': 'Invalid or missing JSON.'}), 400
     
     if not verify_captcha(data.get('captchaToken', ''), request.remote_addr):
         routes_logger.warning('Warning: Captcha failed.')
         return jsonify({'error': 'Captcha failed.'}), 403
-
-    if not data:
-        routes_logger.warning("Warning in contact_route: Invalid or mission JSON")
-        return jsonify({'error': 'Invalid or missing JSON.'}), 400
     
     name = sanitize(data.get('name', ''))
     email = sanitize(data.get('email', ''))
@@ -49,7 +55,9 @@ def receive_contact_message():
     #send email
     try:
         send_to_email(name, email, message)
+        return jsonify({'status': 'Message sent!'}), 200
     except Exception as e:
         routes_logger.error(f"Error in contat_route: Email sending failed: {e}")
+        return jsonify({'status': 'Saved to database, but failed to email.'}), 202
 
-    return jsonify({'status': 'Message sent!'}), 200
+    
