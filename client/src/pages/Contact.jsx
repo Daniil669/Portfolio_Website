@@ -97,12 +97,11 @@ export default function Contact() {
                 setCaptchaValue(null);
                 captchaRef.current?.reset();
             } catch (err) {
-                console.error("Failed to send contact form:", err);
                 setServerAnswer("There was an error sending your message. Please try again later.");
             }
         }
     }catch (error) {
-        console.log("Error:", error)
+        return error
     }
     }
 
@@ -160,7 +159,7 @@ export default function Contact() {
                         <div className='captchaWrapper'>
                         <ReCAPTCHA
                         ref={captchaRef}
-                        sitekey={import.meta.env.VITE_SITE_KEY_DEV}
+                        sitekey={import.meta.env.VITE_SITE_SECRET}
                         onChange={handleCaptchaChange}
                         />
                         </div>

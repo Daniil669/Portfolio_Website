@@ -25,9 +25,9 @@ export default function Service() {
       setServices(data);
     } catch (err) {
       if (err.name === 'AbortError' || err.name === 'CanceledError') {
-        console.warn("Service data fetch aborted");
+        return err.name
       } else {
-        console.error("Failed to load services:", err);
+        return err
       }
     }
   };

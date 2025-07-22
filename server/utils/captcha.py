@@ -8,7 +8,7 @@ dotenv.load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '..', '.e
 def verify_captcha(captcha_token, remote_ip):
     try:
         data = {
-            "secret": os.environ.get("RECAPTCHA_SECRET_DEV"),
+            "secret": os.environ.get("RECAPTCHA_SECRET"),
             "response": captcha_token,
             "remoteip": remote_ip
         }

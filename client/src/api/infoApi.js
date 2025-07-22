@@ -8,7 +8,6 @@ const about_api = async (options = {}) => {
     const result = response.data;
     return result
     }catch(error){
-        console.log(error)
         return null
     }
 }
@@ -19,7 +18,6 @@ const about_photo_api = async (options = {}) => {
     const result = URL.createObjectURL(response.data)
     return result
     } catch(error){
-        console.log(error)
         return null
     }
 }
@@ -30,7 +28,6 @@ const projects_api = async (options = {}) => {
     const result = response.data
     return result
     }catch(error){
-        console.log(error)
         return null
     }
 }
@@ -41,7 +38,6 @@ const freelance_project_api = async () => {
         const result = response.data
         return result
     } catch (error) {
-        console.log(error)
         return null
     }
 }
@@ -52,7 +48,6 @@ const services_api = async (options = {}) => {
         const result = response.data
         return result
     } catch (error) {
-        console.log(error)
         return null
     }
 }
@@ -62,7 +57,6 @@ const cv_api = async () => {
         const response = await axios.get(`${API_BASE}/api/info/cv`, {responseType: 'blob'})
         return response.data
     } catch (error) {
-        console.log(error)
         return null
     }
 }

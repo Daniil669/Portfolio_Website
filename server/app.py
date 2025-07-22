@@ -9,8 +9,6 @@ from utils.log_helper import app_logger
 from extensions import cache, limiter
 from config import DevelopmentConfig, ProductionConfig
 
-
-
 dotenv.load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), '.env'))
 
 app = Flask(__name__)
@@ -19,8 +17,6 @@ if os.environ.get("FLASK_ENV", "development") == "development":
     app.config.from_object(DevelopmentConfig)
 else:
     app.config.from_object(ProductionConfig)
-
-
 
 cache.init_app(app)
 

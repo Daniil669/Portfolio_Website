@@ -20,7 +20,7 @@ def get_project_demo(project_name):
 
 
 @github_bp.route('/projects_info/<gith_type>')
-@limiter.limit("50 per minute; 100 per hour")
+@limiter.limit("50 per minute; 300 per hour")
 @cache.cached(timeout=1800, unless=lambda: request.args.get('refresh') == 'true')
 def get_projects_info(gith_type):
     try:

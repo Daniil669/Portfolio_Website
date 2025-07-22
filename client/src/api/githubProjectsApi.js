@@ -8,7 +8,7 @@ const demos_api = async (project_name) => {
         const result = URL.createObjectURL(response.data)
         return result
     } catch (error) {
-        console.log(error)
+        return error
     }
 }
 
