@@ -159,7 +159,7 @@ export default function Contact() {
                         <div className='captchaWrapper'>
                         <ReCAPTCHA
                         ref={captchaRef}
-                        sitekey={import.meta.env.VITE_SITE_SECRET}
+                        sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
                         onChange={handleCaptchaChange}
                         />
                         </div>
