@@ -19,6 +19,7 @@
 /* scrolling viewport for long pages */
 .terminal-scroll {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,4 +33,17 @@
 }
 .terminal-scroll::-webkit-scrollbar-thumb {
   background: #00FF66;
+}
+
+@media (max-width: 768px) {
+  .terminal {
+    width: 85%;
+  }
+  .terminal-scroll {
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+
 }

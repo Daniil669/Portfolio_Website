@@ -76,7 +76,7 @@ async def fetch_parse_readme(repo, username, session):
             header_tag = soup.find("h2")
             demo_link = (
                 header_tag.find_next_sibling("p").find("a")["href"]
-                if header_tag and header_tag.get_text(strip=True).lower() == "demo"
+                if header_tag and header_tag.get_text(strip=True).lower() == "result"
                 and header_tag.find_next_sibling("p")
                 and header_tag.find_next_sibling("p").find("a")
                 else ""

@@ -34,7 +34,7 @@ export default function Card({ data, icon = null, variant="default" }) {
           <div className="button-group-card">
             {data.links.demo && (
               <a href={data.links.demo} target="_blank" rel="noopener noreferrer" className="terminal-button-card">
-                {"[DEMO]"}
+                {"[RESULT]"}
               </a>
             )}
             {data.links.source && (
