@@ -38,9 +38,11 @@
 @media (max-width: 768px) {
   .terminal {
     width: 85%;
+    height: 85vh;
+    margin-top: 3.5rem;
   }
   .terminal-scroll {
-    padding-bottom: 4.5rem;
+    padding-bottom: 3.5rem;
   }
 }
 

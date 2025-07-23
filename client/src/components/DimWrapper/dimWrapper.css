@@ -27,3 +27,9 @@
 .dim-wrapper.dimmed::before {
   backdrop-filter: blur(1px);
 }
+
+@media (max-width: 768px) {
+  .dim-wrapper {
+    align-items: flex-start;
+  }
+}
